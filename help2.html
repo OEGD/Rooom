@@ -69,13 +69,13 @@ preserntaiton
         }
 
         .side0 {
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.1), lemonchiffon 0.5em);
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgb(247, 245, 235) 0.5em);
             padding: 1em;
             box-sizing: border-box;
         }
 
         .side1 {
-            background: linear-gradient(to left, rgba(0, 0, 0, 0.1), powderblue 0.8em);
+            background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgb(247, 245, 235) 0.8em);
             padding: 1em;
             box-sizing: border-box;
         }
@@ -91,7 +91,7 @@ preserntaiton
 
         #p1s0 {
             background-color: white;
-            background-image: url('https://allplayces.de/wp-content/uploads/2022/10/Jingle-Bells_mitNotenbuchstaben_v02.jpg');
+            /* background-image: url('https://allplayces.de/wp-content/uploads/2022/10/Jingle-Bells_mitNotenbuchstaben_v02.jpg'); */
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
@@ -99,10 +99,32 @@ preserntaiton
 
         #p2s0 {
             background-color: white;
-            background-image: url('https://allplayces.de/wp-content/uploads/2022/10/Jingle-Bells_mitL.jpg');
+            /* background-image: url('https://allplayces.de/wp-content/uploads/2022/10/Jingle-Bells_mitL.jpg'); */
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
+        }
+
+        #cover {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background: rgb(44, 44, 44);
+            font-size: 3vw;
+            text-align: center;
+        }
+
+        .side:hover {
+            cursor: pointer;
+        }
+
+        .page-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            text-align: center;
         }
     </style>
 </head>
@@ -110,12 +132,35 @@ preserntaiton
 <body>
     <div class="book">
         <div class="page page0">
-            <div class="side side0">page 0 side 0 </div>
-            <div id="p0s1" class="side side1">page 0 side 1
+            <div id="cover" class="side side0">Metaverse<br>
+                Escape Rooom<br>
+                Hilfesystem
+                <br>
+                <br>
+                ACHTUNG<br>
+                Öffne dieses Buch nur, wenn
+                du Hilfe beim Lösen der
+                Rätsel benötigtst
             </div>
+            <div id="p0s1" class="side side1"></div>
         </div>
         <div class="page page1">
-            <div id="p1s0" class="side side0">page 1 side 0
+            <div id="p1s0" class="side side0">Vorwort
+                Um den Metaverse Escape Rooom zu lösen und dadurch
+                Weihnachten zu retten, hat dich Santa Claus um die
+                Unterstützung bei 4 Aufgaben gebeten.
+                Erst nach Absolvierung all dieser Tasks lässt sich die verschlossene Tür öffnen - das fünfte und finale
+                Rätsel.
+                Auf den folgenden Doppelseitenseiten findtest du jeweils 3 Hinweise zu den jeweiligen Rätseln /
+                Aufgaben.
+                Der erste Hinweis ist noch sehr allgemein gehalten, der
+                letzte verrät dir die Lösung.
+                Übersicht:
+                Santas 1. Aufgabe - das Weihnachtslied - Seite 1
+                Santas 2. Aufgabe - die Geschenke - Seite 3
+                Santas 3. Aufgabe - die Essens-Bestellung - Seite 5
+                Santas 4. Aufgabe - Mrs. Claus - Seite 7
+                Das letzte Rätsel - die verschlossene Tür - Seite 9
             </div>
             <div class="side side1">page 1 side 1</div>
         </div>
@@ -126,6 +171,10 @@ preserntaiton
         <div class="page page3">
             <div class="side side0">page 3 side 0</div>
             <div class="side side1">page 3 side 1</div>
+        </div>
+        <div class="page page4">
+            <div class="side side0">page 4 side 0</div>
+            <div class="side side1">page 4 side 1</div>
         </div>
     </div>
     <script>
