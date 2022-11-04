@@ -1,0 +1,690 @@
+<script
+  type="text/javascript"
+  src="https://code.jquery.com/jquery-1.7.1.min.js"
+></script>
+<style>
+  .formClass {
+    background: #d3d3d3;
+    padding: 3em;
+    border-radius: 20px;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    backdrop-filter: blur(10px);
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    width: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 20px;
+  }
+
+  .questionClass {
+    background: #d3d3d3;
+    padding: 3em;
+    border-radius: 20px;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    backdrop-filter: blur(10px);
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    font-size: 1.2em;
+  }
+
+  .container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 90vw;
+    height: 70vh;
+  }
+
+  .hide {
+    display: none !important;
+  }
+
+  .wrong {
+    font: 20px "Nunito", sans-serif;
+    color: red;
+  }
+
+  .a {
+    text-decoration: none;
+    color: #666;
+    font-size: 16px;
+  }
+
+  .a:hover {
+    text-shadow: 2px 2px 6px #00000040;
+    cursor: pointer;
+  }
+
+  .a:active {
+    text-shadow: none;
+  }
+
+  .flex-base {
+    display: flex;
+    justify-content: center;
+  }
+
+  .middle {
+    margin: auto;
+    width: 100%;
+  }
+
+  #quizhtml {
+    display: flex;
+    justify-content: center;
+  }
+
+  #quizhtml * {
+    margin: 0px;
+    padding: 0px;
+    font: 16px "Nunito", sans-serif;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  #quizbody {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  #quiz {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto auto 0px;
+    position: relative;
+    height: 60vh;
+    width: 85vh;
+  }
+
+  #quiz h1 {
+    color: #fafafa;
+    font-weight: 600;
+    font-size: 36px;
+    text-transform: uppercase;
+    text-align: left;
+    line-height: 44px;
+  }
+
+  #quiz button {
+    float: left;
+    margin: 8px 30px 0px 30px;
+    padding: 4px 8px;
+    background: #d13202;
+    color: #691900;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    color: white;
+  }
+
+  #quiz button:hover {
+    background: #691900;
+    color: #fff;
+  }
+
+  #quiz button:disabled {
+    opacity: 0.5;
+    background: #d13202;
+    color: #691900;
+    cursor: default;
+  }
+
+  #question {
+    padding: 20px;
+    background: #fafafa;
+    text-align: center;
+  }
+
+  #question h2 {
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  #question input[type="radio"] {
+    display: none;
+  }
+
+  #question label {
+    display: inline-block;
+    margin: 4px;
+    padding: 8px;
+    background: #d13202;
+    color: white;
+    width: calc(33% - 8px);
+    height: 0;
+    padding-bottom: calc(33% - 8px);
+    min-width: 50px;
+    cursor: pointer;
+  }
+
+  #question label img {
+    object-fit: contain;
+    width: 100%;
+  }
+
+  #question label:hover {
+    background: #691900;
+  }
+
+  #question input[type="checkbox"]:checked + label {
+    background: #691900;
+  }
+
+  #quiz-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 44px;
+    margin: auto auto;
+    background: #fafafa;
+    width: 50%;
+    height: calc(100% - 44px);
+    text-align: center;
+  }
+
+  #quiz-results-message {
+    display: block;
+    color: #691900;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  #quiz-results-score {
+    display: block;
+    color: #d13202;
+    font-size: 20px;
+  }
+
+  #quiz-results-score b {
+    color: #691900;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  #quiz-retry-button {
+    float: left;
+    margin: 8px 0px 0px 8px;
+    padding: 4px 8px;
+    background: #d13202;
+    color: #691900;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+  }
+  #img {
+    display: flex;
+    justify-content: center;
+  }
+  .number {
+    margin: auto;
+    width: 22%;
+  }
+  #laptopContainer {
+    width: 100%;
+    height: 100%;
+    background: url("https://static.wixstatic.com/media/f397c8_dc6ba4ba651b46bb87e958a3765706d7~mv2.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #topBar {
+    background-color: rgb(44, 44, 44);
+    width: 100%;
+    height: 6%;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  input[type="checkbox"] {
+    display: none;
+  }
+  #topBar img {
+    height: 64%;
+  }
+  #logInBtn {
+    margin-top: 10px;
+    font: 20px "Nunito", sans-serif;
+  }
+  .p {
+    font: 20px "Nunito", sans-serif;
+  }
+  #pwInput1 {
+    margin-bottom: 10px;
+    font: 20px "Nunito", sans-serif;
+  }
+</style>
+<div id="laptopContainer" class="middle">
+  <div id="logIn" class="container">
+    <div id="topBar">
+      <img
+        src="https://static.wixstatic.com/media/f397c8_3d1c5558769f4ad28df34c01118b3f06~mv2.png"
+        alt=""
+      />
+      <p style="margin-left: 20px">LIEFERINI</p>
+    </div>
+    <form id="pwAbfrage" class="formClass">
+      <p class="p">Willkommen</p>
+      <input
+        id="pwInput1"
+        class="input"
+        type="password"
+        placeholder="Passwort"
+      /><br />
+      <span id="signIn" class="hide wrong">Falsches Passwort</span><br />
+      <input
+        id="logInBtn"
+        class="input"
+        type="button"
+        value="Log in"
+        onclick="checkLogIN()"
+      /><br />
+    </form>
+
+    <div id="question" class="questionClass hide">
+      <p>Notiz: "Gelber Postit mit verschlüsseltem Passwort"</p>
+    </div>
+  </div>
+  <div id="content" class="hide">
+    <div id="logIn" class="container">
+      <div id="topBar">
+        <img
+          src="https://static.wixstatic.com/media/f397c8_3d1c5558769f4ad28df34c01118b3f06~mv2.png"
+          alt=""
+        />
+        <p style="margin-left: 20px">LIEFERINI</p>
+      </div>
+      <div id="quizhtml">
+        <div id="quizbody">
+          <div id="quiz">
+            <div style="display: flex; justify-content: center; width: 50%">
+              <h1 id="quiz-name"></h1>
+            </div>
+            <div>
+              <button id="submit-button">Gerichte abschicken</button>
+            </div>
+            <div id="quiz-results">
+              <p id="quiz-results-message"></p>
+              <p id="quiz-results-score"></p>
+              <button id="quiz-retry-button">Nochmal versuchen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="img" class="hide">
+    <div id="logIn" class="container">
+      <div id="topBar">
+        <img
+          src="https://static.wixstatic.com/media/f397c8_3d1c5558769f4ad28df34c01118b3f06~mv2.png"
+          alt=""
+        />
+        <p style="margin-left: 20px">LIEFERINI</p>
+      </div>
+      <img
+        class="number"
+        src="https://allplayces.de/wp-content/uploads/2022/09/Weihnachtszahl_9_v01_KK.png"
+        alt=""
+      />
+    </div>
+  </div>
+</div>
+<script>
+  var input = document.getElementById("pwInput1");
+
+  // Execute a function when the user presses a key on the keyboard
+  input.addEventListener("keypress", function (event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+      event.preventDefault();
+      checkLogIN();
+    }
+  });
+  var pcTrue = localStorage.getItem("pc");
+
+  var pwInput1Form = document.getElementById("pwInput1");
+
+  pwInput1.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("logInBtn").click();
+    }
+  });
+
+  if (pcTrue == "t") {
+    openPC();
+  }
+
+  function checkLogIN() {
+    var pwInput1 = document.getElementById("pwInput1").value;
+    if (pwInput1 == "2715") {
+      openPC();
+    } else {
+      document.getElementById("signIn").classList.remove("hide");
+    }
+  }
+  function openPC() {
+    document.getElementById("logIn").classList.add("hide");
+    document.getElementById("content").classList.remove("hide");
+  }
+  function wrong() {
+    document.getElementById("signIn").classList.remove("hide");
+  }
+  var user_choice_array = [];
+  var rightCheckboxes = [];
+  var all_questions = [
+    {
+      question_string: "Speisen",
+      choices: {
+        correct: [
+          "https://allplayces.de/wp-content/uploads/2022/09/Supper.png",
+          "https://allplayces.de/wp-content/uploads/2022/09/Ganz.png",
+          "https://allplayces.de/wp-content/uploads/2022/09/Bratapfel.png",
+        ],
+        wrong: [
+          "https://allplayces.de/wp-content/uploads/2022/09/Lebkuchenhaus.png",
+          "https://allplayces.de/wp-content/uploads/2022/09/Cupcakes.png",
+          "https://allplayces.de/wp-content/uploads/2022/09/Hummer.png",
+          "https://allplayces.de/wp-content/uploads/2022/09/Fisch.png",
+          "https://allplayces.de/wp-content/uploads/2022/09/WurstPlatte.png",
+          "https://allplayces.de/wp-content/uploads/2022/09/TomateMozarella.png",
+        ],
+      },
+    },
+  ];
+
+  // An object for a Quiz, which will contain Question objects.
+  var Quiz = function (quiz_name) {
+    // Private fields for an instance of a Quiz object.
+    this.quiz_name = quiz_name;
+
+    // This one will contain an array of Question objects in the order that the questions will be presented.
+    this.questions = [];
+  };
+
+  // A function that you can enact on an instance of a quiz object. This function is called add_question() and takes in a Question object which it will add to the questions field.
+  Quiz.prototype.add_question = function (question) {
+    // Randomly choose where to add question
+    var index_to_add_question = Math.floor(
+      Math.random() * this.questions.length
+    );
+    this.questions.splice(index_to_add_question, 0, question);
+  };
+
+  // A function that you can enact on an instance of a quiz object. This function is called render() and takes in a variable called the container, which is the <div> that I will render the quiz in.
+  Quiz.prototype.render = function (container) {
+    // For when we're out of scope
+    var self = this;
+
+    // Hide the quiz results modal
+    $("#quiz-results").hide();
+
+    // Write the name of the quiz
+    $("#quiz-name").text(this.quiz_name);
+
+    // Create a container for questions
+    var question_container = $("<div>")
+      .attr("id", "question")
+      .insertAfter("#quiz-name");
+
+    // Helper function for changing the question and updating the buttons
+    function change_question() {
+      self.questions[current_question_index].render(question_container);
+      $("#prev-question-button").prop("disabled", current_question_index === 0);
+      $("#next-question-button").prop(
+        "disabled",
+        current_question_index === self.questions.length - 1
+      );
+
+      // Determine if all questions have been answered
+      var all_questions_answered = true;
+      for (var i = 0; i < self.questions.length; i++) {
+        if (self.questions[i].user_choice_index === null) {
+          all_questions_answered = false;
+          break;
+        }
+      }
+      //$("#submit-button").prop("disabled", !all_questions_answered);
+    }
+
+    // Render the first question
+    var current_question_index = 0;
+    change_question();
+
+    // Add listener for the previous question button
+    $("#prev-question-button").click(function () {
+      if (current_question_index > 0) {
+        current_question_index--;
+        change_question();
+      }
+    });
+
+    // Add listener for the next question button
+    $("#next-question-button").click(function () {
+      if (current_question_index < self.questions.length - 1) {
+        current_question_index++;
+        change_question();
+      }
+    });
+
+    // Add listener for the submit answers button
+    $("#submit-button").click(function () {
+      // Determine how many questions the user got right
+      var score = 0;
+      var checkboxes = document.getElementsByName("choices");
+      var checkboxesChecked = [];
+      // loop over them all
+      for (var i = 0; i < checkboxes.length; i++) {
+        // And stick the checked ones onto an array...
+        if (checkboxes[i].checked) {
+          checkboxesChecked.push(
+            checkboxes[i].value.charAt(checkboxes[i].value.length - 1)
+          );
+        }
+      }
+      for (var i = 0; i < self.questions.length; i++) {
+        if (
+          checkboxesChecked.sort().join(",") ===
+          rightCheckboxes.sort().join(",")
+        ) {
+          score++;
+        }
+
+        $("#quiz-retry-button").click(function (reset) {
+          renderQuiz();
+        });
+      }
+
+      // Display the score with the appropriate message
+      var percentage = score / self.questions.length;
+      var message;
+      if (percentage === 1) {
+        message = "Fantastisch!";
+        document.getElementById("content").classList.add("hide");
+        document.getElementById("img").classList.remove("hide");
+      } else if (percentage >= 0.75) {
+        message = "Hei, das war ja schon ganz gut.";
+      } else if (percentage >= 0.5) {
+        message = "Das war knapp.";
+      } else {
+        message = "Schade";
+      }
+      $("#quiz-results-message").text(message);
+      $("#quiz-results-score").html("Das war leider nicht korrekt.");
+      $("#quiz-results").slideDown();
+      $("#submit-button").slideUp();
+      $("#next-question-button").slideUp();
+      $("#prev-question-button").slideUp();
+    });
+
+    // Add a listener on the questions container to listen for user select changes. This is for determining whether we can submit answers or not.
+    question_container.bind("user-select-change", function () {
+      var all_questions_answered = true;
+      for (var i = 0; i < self.questions.length; i++) {
+        if (self.questions[i].user_choice_index === null) {
+          all_questions_answered = false;
+          break;
+        }
+      }
+      $("#submit-button").prop("disabled", !all_questions_answered);
+    });
+  };
+
+  // An object for a Question, which contains the question, the correct choice, and wrong choices. This block is the constructor.
+  var Question = function (question_string, correct_choice, wrong_choices) {
+    // Private fields for an instance of a Question object.
+    this.question_string = question_string;
+    this.choices = [];
+    this.user_choice_index = null; // Index of the user's choice selection
+
+    var choiceArray = [];
+    for (var i = 0; i < wrong_choices.length; i++) {
+      choiceArray.push(wrong_choices[i]);
+    }
+    for (var i = 0; i < correct_choice.length; i++) {
+      choiceArray.push(correct_choice[i]);
+    }
+    //choiceArray.push(correct_choice);
+    shuffle(choiceArray);
+    this.choices = choiceArray;
+    this.correct_choice_index1 = this.choices.indexOf(correct_choice[0]);
+    this.correct_choice_index2 = this.choices.indexOf(correct_choice[1]);
+    this.correct_choice_index3 = this.choices.indexOf(correct_choice[2]);
+    rightCheckboxes.push(
+      this.correct_choice_index1,
+      this.correct_choice_index2,
+      this.correct_choice_index3
+    );
+  };
+  // A function that you can enact on an instance of a question object. This function is called render() and takes in a variable called the container, which is the <div> that I will render the question in. This question will "return" with the score when the question has been answered.
+  Question.prototype.render = function (container) {
+    // For when we're out of scope
+    var self = this;
+
+    // Fill out the question label
+    var question_string_h2;
+    if (container.children("h2").length === 0) {
+      question_string_h2 = $("<h2>").appendTo(container);
+    } else {
+      question_string_h2 = container.children("h2").first();
+    }
+    question_string_h2.text(this.question_string);
+
+    // Clear any radio buttons and create new ones
+    if (container.children("input[type=radio]").length > 0) {
+      container.children("input[type=radio]").each(function () {
+        var radio_button_id = $(this).attr("id");
+        $(this).remove();
+        container.children("label[for=" + radio_button_id + "]").remove();
+      });
+    }
+    for (var i = 0; i < this.choices.length; i++) {
+      // Create the radio button
+      var choice_radio_button = $("<input>")
+        .attr("id", "choices-" + i)
+        .attr("type", "checkbox")
+        .attr("name", "choices")
+        .attr("value", "choices-" + i)
+        .attr("checked", i === this.user_choice_index)
+        .appendTo(container);
+
+      // Create the label
+      var choice_label = $("<label>")
+        .attr("for", "choices-" + i)
+        .attr("id", "choiceLbl" + i)
+        .appendTo(container);
+    }
+    for (var i = 0; i < this.choices.length; i++) {
+      console.log("createImages");
+      var choice_img = $("<img>")
+        .attr("src", this.choices[i])
+        .attr("for", "choices-" + i)
+        .appendTo(document.getElementById("choiceLbl" + i));
+    }
+
+    // Add a listener for the radio button to change which one the user has clicked on
+    // $("input[name=choices]").change(function (index) {
+    //   var selected_radio_button_value = [];
+    //   for (var i = 0; i < 8; i++) {
+    //     selected_radio_button_value.push(
+    //       $("input[name=choices]:checked").val()
+    //     );
+    //     // Change the user choice index
+    //     user_choice_array.push(
+    //       parseInt(
+    //         selected_radio_button_value[i].substr(
+    //           selected_radio_button_value[i].length - 1,
+    //           1
+    //         )
+    //       )
+    //     );
+    //     console.log(user_choice_array);
+    //     // Trigger a user-select-change
+    //     container.trigger("user-select-change");
+    //   }
+    // });
+  };
+
+  // "Main method" which will create all the objects and render the Quiz.
+  $(document).ready(function () {
+    // Create an instance of the Quiz object
+    var quiz = new Quiz("");
+
+    // Create Question objects from all_questions and add them to the Quiz object
+    for (var i = 0; i < all_questions.length; i++) {
+      // Create a new Question object
+      var question = new Question(
+        all_questions[i].question_string,
+        all_questions[i].choices.correct,
+        all_questions[i].choices.wrong
+      );
+
+      // Add the question to the instance of the Quiz object that we created previously
+      quiz.add_question(question);
+    }
+
+    // Render the quiz
+    var quiz_container = $("#quiz");
+    quiz.render(quiz_container);
+  });
+  function renderQuiz() {
+    $("#quiz-results").slideUp();
+    $("#submit-button").slideDown();
+    $("#next-question-button").slideDown();
+    $("#prev-question-button").slideDown();
+  }
+  function shuffle(array) {
+    let currentIndex = array.length,
+      randomIndex;
+
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  }
+</script>

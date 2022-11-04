@@ -1,0 +1,169 @@
+<html>
+
+<head>
+    <style>
+        html,
+        body {
+            min-height: 100vh
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .book {
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .page {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            transform-style: preserve-3d;
+        }
+
+        .side {
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .side0 {
+            transform: none;
+        }
+
+        .side1 {
+            transform: rotateY(180deg);
+        }
+
+        .flip {
+            /*do nothing, its used by js*/
+        }
+
+        /* 
+preserntaiton
+*/
+        body {
+            background: slategray;
+        }
+
+        .book {
+            width: 90vw;
+            height: 80vh;
+            perspective: 800px;
+        }
+
+        .page {
+            transition: transform 1s;
+            transform-origin: left center;
+        }
+
+        .side0 {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.1), lemonchiffon 0.5em);
+            padding: 1em;
+            box-sizing: border-box;
+        }
+
+        .side1 {
+            background: linear-gradient(to left, rgba(0, 0, 0, 0.1), powderblue 0.8em);
+            padding: 1em;
+            box-sizing: border-box;
+        }
+
+        .page:first-of-type .side0 {
+            box-shadow: -10px 0 10px -6px rgba(0, 0, 0, 0.3);
+        }
+
+        .page:last-of-type .side1 {
+            box-shadow: 10px 0 10px -6px rgba(0, 0, 0, 0.3);
+        }
+
+
+        #p1s0 {
+            background-color: white;
+            background-image: url('https://allplayces.de/wp-content/uploads/2022/10/Jingle-Bells_mitNotenbuchstaben_v02.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        #p2s0 {
+            background-color: white;
+            background-image: url('https://allplayces.de/wp-content/uploads/2022/10/Jingle-Bells_mitL.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="book">
+        <div class="page page0">
+            <div class="side side0">page 0 side 0 </div>
+            <div id="p0s1" class="side side1">page 0 side 1
+            </div>
+        </div>
+        <div class="page page1">
+            <div id="p1s0" class="side side0">page 1 side 0
+            </div>
+            <div class="side side1">page 1 side 1</div>
+        </div>
+        <div class="page page2">
+            <div id="p2s0" class="side side0">page 2 side 0</div>
+            <div id="p2s1" class="side side1">page 2 side 1</div>
+        </div>
+        <div class="page page3">
+            <div class="side side0">page 3 side 0</div>
+            <div class="side side1">page 3 side 1</div>
+        </div>
+    </div>
+    <script>
+        const pages = Array.from(document.querySelectorAll(".book .page"));
+        const book = document.querySelector(".book");
+        let leftStack = [];
+        let rightStack = Array.from(pages).reverse(); // [p3,p2,p1,p0]
+
+        updatePagesDepth(rightStack);
+
+        for (const page of pages) {
+            page.addEventListener("click", function (e) {
+                if (e.currentTarget.classList.contains("flip")) { //clicked on left stack page
+                    const page = leftStack.pop();
+                    rightStack.push(page);
+                    page.classList.remove("flip");
+                    updatePagesDepth(rightStack);
+                }
+                else { // clicked on right stack page
+                    const page = rightStack.pop();
+                    leftStack.push(page);
+                    page.classList.add("flip");
+                    updatePagesDepth(leftStack);
+                }
+            });
+        }
+
+        function updatePagesDepth(stack) { // first el = farthest
+            for (const [i, page] of stack.entries()) {
+                if (stack == leftStack) {
+                    page.style.transform = `rotateY(-180deg) translateZ(${-i}px)`;
+                }
+                else {
+                    page.style.transform = `rotateY(0) translateZ(${i}px)`;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
