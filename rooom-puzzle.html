@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <style>
+      .content{
+        width: 100%;
+        height: 80vh;
+        background: no-repeat center/100% url("https://static.wixstatic.com/media/f397c8_facb852285614f50a4979c929f9f541a~mv2.png");
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+     .info {
+        position: relative;
+        font-family: Arial;
+        margin: 10px;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 15px;
+      }
+
+      #title {
+        font-size: 20px;
+      }
+
+      #rest2 {
+        font-size: 13px;
+      }
+
+      #text div {
+        position: relative;
+        height: 120.33px;
+        width: 213.33px;
+        border: 1px dashed gray;
+        display: inline-block;
+        margin: 0;
+      }
+
+      #text {
+        width: 670px;
+        height: 384px;
+        margin: auto;
+      }
+
+      #images {
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      #drag1,
+      #drag2,
+      #drag3,
+      #drag4,
+      #drag5,
+      #drag6,
+      #drag7,
+      #drag8,
+      #drag9 {
+        height: 120.33px;
+        width: 213.33px;
+
+        display: inline-block;
+      }
+
+      #drag1 {
+        background-size: cover !important;
+        background: url("https://allplayces.de/wp-content/uploads/2022/09/01.png");
+      }
+
+      #drag2 {
+        background-size: cover !important;
+        background: url("https://allplayces.de/wp-content/uploads/2022/09/02.png");
+      }
+
+      #drag3 {
+        background-size: cover !important;
+        background: url("https://allplayces.de/wp-content/uploads/2022/09/03.png");
+      }
+
+      #drag4 {
+        background-size: cover !important;
+        background: url("https://allplayces.de/wp-content/uploads/2022/09/04.png");
+      }
+
+      #drag5 {
+        background-size: cover !important;
+        background: url("https://allplayces.de/wp-content/uploads/2022/09/05.png");
+      }
+
+      #drag6 {
+        background-size: cover !important;
+        background: url("https://allplayces.de/wp-content/uploads/2022/09/06.png");
+      }
+
+      #drag7 {
+        background-size: cover !important;
+        background: url("https://allplayces.de/wp-content/uploads/2022/09/07.png");
+      }
+
+      #drag8 {
+        background-size: cover !important;
+        background: url("https://allplayces.de/wp-content/uploads/2022/09/08.png");
+      }
+
+      #drag9 {
+        background-size: cover !important;
+        background: url("https://allplayces.de/wp-content/uploads/2022/09/09.png");
+      }
+      .hide {
+        display: none !important;
+      }
+      #images0{
+        min-height: 250px;
+        min-width: 90%;
+      }
+      #rImage{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      #rImage img{
+        width: 40%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="content">
+      <div id="text">
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      </div>
+  
+      <div id="images0" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div id="drag1" draggable="true" ondragstart="drag(event)"></div>
+        <div id="drag2" draggable="true" ondragstart="drag(event)"></div>
+        <div id="drag3" draggable="true" ondragstart="drag(event)"></div>
+        <div id="drag4" draggable="true" ondragstart="drag(event)"></div>
+        <div id="drag5" draggable="true" ondragstart="drag(event)"></div>
+        <div id="drag6" draggable="true" ondragstart="drag(event)"></div>
+        <div id="drag7" draggable="true" ondragstart="drag(event)"></div>
+        <div id="drag8" draggable="true" ondragstart="drag(event)"></div>
+        <div id="drag9" draggable="true" ondragstart="drag(event)"></div>
+      </div>
+      <div id="rImage" class="hide">
+        <img src="https://allplayces.de/wp-content/uploads/2022/09/Textnotiz_verbrannt_v02_KK-1.png" alt="">
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function orderElems() {
+        var elems = [],
+          tempElem,
+          pn,
+          args = orderElems.arguments;
+
+        for (var i = 0, len = args.length; i < len; i++)
+          (pn = (elems[i] = tempElem = document.getElementById(args[i]))
+            .parentNode).removeChild(tempElem);
+
+        for (var i = len - 1, idx, tmp; i > -1; i--) {
+          while ((idx = Math.floor(Math.random() * len)) == i);
+          tmp = elems[i];
+          elems[i] = elems[idx];
+          elems[idx] = tmp;
+        }
+
+        for (var i = 0; i < len; i++) pn.appendChild(elems[i]);
+      }
+
+      orderElems(
+        "drag1",
+        "drag2",
+        "drag3",
+        "drag4",
+        "drag5",
+        "drag6",
+        "drag7",
+        "drag8",
+        "drag9"
+      );
+    </script>
+    <script type="text/javascript">
+      var targetArray = [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ];
+
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+
+      function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+      }
+
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        checkData(data, ev.target.id);
+      }
+
+      function checkData(dataId, targetId) {
+        const lastDataStr = dataId.charAt(dataId.length - 1);
+        const lastTargetStr = targetId.charAt(targetId.length - 1);
+        if (lastDataStr == lastTargetStr) {
+          var number = parseInt(lastDataStr) - 1;
+          targetArray[number] = true;
+          checkWin();
+        }else{
+          var numberClear = parseInt(lastDataStr) - 1;
+          targetArray[numberClear] = false;
+        }
+      }
+      function checkWin() {
+        let result = targetArray.every(Boolean);
+        if (result == true) {
+         document.getElementById('text').classList.add('hide');
+         document.getElementById('images0').classList.add('hide');
+         document.getElementById('rImage').classList.remove('hide');
+        }
+      }
+    </script>
+  </body>
+</html>
