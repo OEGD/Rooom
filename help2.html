@@ -12,6 +12,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            flex-direction: column;
         }
 
         .book {
@@ -125,6 +126,22 @@ preserntaiton
             align-items: center;
             font-size: 18px;
             text-align: center;
+            flex-direction: column;
+        }
+
+        .wordHeading {
+            font-size: 2vw;
+        }
+
+        .wordWrapping {
+            font-size: 1.5vw;
+        }
+
+        .bookmarks {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2vw;
         }
     </style>
 </head>
@@ -145,37 +162,53 @@ preserntaiton
             <div id="p0s1" class="side side1"></div>
         </div>
         <div class="page page1">
-            <div id="p1s0" class="side side0 page-content">Vorwort
-                Um den Metaverse Escape Rooom zu lösen und dadurch
-                Weihnachten zu retten, hat dich Santa Claus um die
-                Unterstützung bei 4 Aufgaben gebeten.
-                Erst nach Absolvierung all dieser Tasks lässt sich die verschlossene Tür öffnen - das fünfte und finale
-                Rätsel.
-                Auf den folgenden Doppelseitenseiten findtest du jeweils 3 Hinweise zu den jeweiligen Rätseln /
-                Aufgaben.
-                Der erste Hinweis ist noch sehr allgemein gehalten, der
-                letzte verrät dir die Lösung.
-                Übersicht:
-                Santas 1. Aufgabe - das Weihnachtslied - Seite 1
-                Santas 2. Aufgabe - die Geschenke - Seite 3
-                Santas 3. Aufgabe - die Essens-Bestellung - Seite 5
-                Santas 4. Aufgabe - Mrs. Claus - Seite 7
-                Das letzte Rätsel - die verschlossene Tür - Seite 9
+            <div id="p1s0" class="side side0 page-content">
+                <p><span class="wordHeading"><strong>Vorwort </strong></span></p>
+                <p><span class="wordWrapping">Um den Metaverse Escape Rooom zu l&ouml;sen und dadurch Weihnachten zu
+                        retten, hat dich Santa Claus um die Unterst&uuml;tzung bei 4 Aufgaben gebeten. Erst nach
+                        Absolvierung all dieser Tasks l&auml;sst sich die verschlossene T&uuml;r &ouml;ffnen - das
+                        f&uuml;nfte und finale R&auml;tsel. Auf den folgenden Doppelseitenseiten findtest du jeweils 3
+                        Hinweise zu den jeweiligen R&auml;tseln / Aufgaben. Der erste Hinweis ist noch sehr allgemein
+                        gehalten, der letzte verr&auml;t dir die L&ouml;sung. </span></p>
+                <p>&nbsp;</p>
+                <p><span class="wordWrapping">&Uuml;bersicht:</span></p>
+                <p><span class="wordWrapping">Santas 1. Aufgabe - das Weihnachtslied - Seite 1 </span></p>
+                <p><span class="wordWrapping">Santas 2. Aufgabe - die Geschenke - Seite 3</span></p>
+                <p><span class="wordWrapping">Santas 3. Aufgabe - die Essens-Bestellung - Seite 5 </span></p>
+                <p><span class="wordWrapping">Santas 4. Aufgabe - Mrs. Claus - Seite 7 Das letzte R&auml;tsel - die
+                        verschlossene T&uuml;r - Seite 9</span></p>
+
             </div>
             <div class="side side1">page 1 side 1</div>
+            <!--Rätsel 1 Seite 1-->
         </div>
         <div class="page page2">
             <div id="p2s0" class="side side0">page 2 side 0</div>
+            <!--Rätsel 1 Seite 2-->
             <div id="p2s1" class="side side1">page 2 side 1</div>
         </div>
         <div class="page page3">
             <div class="side side0">page 3 side 0</div>
+            <!--Rätsel 2 -->
             <div class="side side1">page 3 side 1</div>
         </div>
         <div class="page page4">
             <div class="side side0">page 4 side 0</div>
+            <!--Rätsel 3 -->
             <div class="side side1">page 4 side 1</div>
         </div>
+        <div class="page page5">
+            <div class="side side0">page 5 side 0</div>
+            <!--Rätsel 4 -->
+            <div class="side side1">page 5 side 1</div>
+        </div>
+    </div>
+    <div class="bookmarks">
+        <button id="sol1" onclick="bookmark(this.id)">Rätsel 1</button>
+        <button id="sol2" onclick="bookmark(this.id)">Rätsel 2</button>
+        <button id="sol3" onclick="bookmark(this.id)">Rätsel 3</button>
+        <button id="sol4" onclick="bookmark(this.id)">Rätsel 4</button>
+        <button id="sol5" onclick="bookmark(this.id)">Rätsel 5</button>
     </div>
     <script>
         const pages = Array.from(document.querySelectorAll(".book .page"));
@@ -184,7 +217,8 @@ preserntaiton
         let rightStack = Array.from(pages).reverse(); // [p3,p2,p1,p0]
 
         updatePagesDepth(rightStack);
-
+        console.log(leftStack);
+        console.log(rightStack);
         for (const page of pages) {
             page.addEventListener("click", function (e) {
                 if (e.currentTarget.classList.contains("flip")) { //clicked on left stack page
@@ -192,6 +226,7 @@ preserntaiton
                     rightStack.push(page);
                     page.classList.remove("flip");
                     updatePagesDepth(rightStack);
+                    console.log(leftStack);
                 }
                 else { // clicked on right stack page
                     const page = rightStack.pop();
@@ -210,6 +245,31 @@ preserntaiton
                 else {
                     page.style.transform = `rotateY(0) translateZ(${i}px)`;
                 }
+            }
+        }
+
+        function bookmark(id) {
+            switch (id) {
+                case 'sol1':
+                    if (rightStack.length >= 4) {
+                        for (i = rightStack.length; i >= 5; i--) {
+                            setTimeout(function () {
+                            }, 200);
+                            const page = rightStack.pop();
+                            leftStack.push(page);
+                            page.classList.add("flip");
+                            updatePagesDepth(leftStack);
+                        }
+                    } 
+                    break;
+                case 'sol2':
+                    break;
+                case 'sol3':
+                    break;
+                case 'sol4':
+                    break;
+                case 'sol5':
+                    break;
             }
         }
     </script>
