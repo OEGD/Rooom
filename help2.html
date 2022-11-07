@@ -1,305 +1,821 @@
 <html>
-
-<head>
+  <head>
     <style>
-        html,
-        body {
-            min-height: 100vh
-        }
+      html,
+      body {
+        min-height: 100vh;
+      }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            flex-direction: column;
-        }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        flex-direction: column;
+      }
 
-        .book {
-            position: relative;
-            transform-style: preserve-3d;
-        }
+      .book {
+        position: relative;
+        transform-style: preserve-3d;
+      }
 
-        .page {
-            position: absolute;
-            width: 50%;
-            height: 100%;
-            top: 0;
-            left: 50%;
-            transform-style: preserve-3d;
-        }
+      .page {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        transform-style: preserve-3d;
+      }
 
-        .side {
-            position: absolute;
-            top: 0;
-            left: 0;
-            backface-visibility: hidden;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-        }
+      .side {
+        position: absolute;
+        top: 0;
+        left: 0;
+        backface-visibility: hidden;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+      }
 
-        .side0 {
-            transform: none;
-        }
+      .side0 {
+        transform: none;
+        box-shadow: inset 14px 0 14px -7px rgba(0, 0, 0, 0.4);
+      }
 
-        .side1 {
-            transform: rotateY(180deg);
-        }
+      .side1 {
+        transform: rotateY(180deg);
+        box-shadow: inset -14px 0 14px -7px rgba(0, 0, 0, 0.4);
+      }
 
-        .flip {
-            /*do nothing, its used by js*/
-        }
+      .flip {
+        /*do nothing, its used by js*/
+      }
 
-        /* 
-preserntaiton
-*/
-        body {
-            background: slategray;
-        }
+      /*
+      preserntaiton
+      */
+      body {
+        background: slategray;
+      }
 
-        .book {
-            width: 90vw;
-            height: 80vh;
-            perspective: 800px;
-        }
+      .book {
+        width: 90vw;
+        height: 80vh;
+        perspective: 800px;
+        z-index: 2;
+      }
+      #cover:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 30px;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        border-radius: 2px 0 0 2px;
+        /* http://colorzilla.com/gradient-editor/#ffffff+45,000000+49&0+0,0.15+20,0.15+84,0+100 */
+        background: -moz-linear-gradient(
+          left,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.1) 20%,
+          rgba(255, 255, 255, 0.1) 45%,
+          rgba(0, 0, 0, 0.15) 49%,
+          rgba(0, 0, 0, 0.15) 84%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        background: -webkit-linear-gradient(
+          left,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.1) 20%,
+          rgba(255, 255, 255, 0.1) 45%,
+          rgba(0, 0, 0, 0.15) 49%,
+          rgba(0, 0, 0, 0.15) 84%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.1) 20%,
+          rgba(255, 255, 255, 0.1) 45%,
+          rgba(0, 0, 0, 0.15) 49%,
+          rgba(0, 0, 0, 0.15) 84%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#00000000',GradientType=1);
+      }
+      .back-cover {
+        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2),
+          -1px 4px 4px 0 rgba(0, 0, 0, 0.3);
+        background: #1e1e1e !important;
+        background: -moz-linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
+        background: -webkit-linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
+        background: linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e1e', endColorstr='#4f4f4f',GradientType=1 );
+      }
+      .back-cover:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 30px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 2px 0 0 2px;
+        /* http://colorzilla.com/gradient-editor/#ffffff+45,000000+49&0+0,0.15+20,0.15+84,0+100 */
+        background: -moz-linear-gradient(
+          left,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.1) 20%,
+          rgba(255, 255, 255, 0.1) 45%,
+          rgba(0, 0, 0, 0.15) 49%,
+          rgba(0, 0, 0, 0.15) 84%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        background: -webkit-linear-gradient(
+          left,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.1) 20%,
+          rgba(255, 255, 255, 0.1) 45%,
+          rgba(0, 0, 0, 0.15) 49%,
+          rgba(0, 0, 0, 0.15) 84%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.1) 20%,
+          rgba(255, 255, 255, 0.1) 45%,
+          rgba(0, 0, 0, 0.15) 49%,
+          rgba(0, 0, 0, 0.15) 84%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#00000000',GradientType=1);
+      }
+      .page {
+        transition: transform 1s;
+        transform-origin: left center;
+      }
 
-        .page {
-            transition: transform 1s;
-            transform-origin: left center;
-        }
+      .side0 {
+        background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.1),
+          rgb(247, 245, 235) 0.5em
+        );
+        padding: 2em;
+        box-sizing: border-box;
+      }
 
-        .side0 {
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgb(247, 245, 235) 0.5em);
-            padding: 1em;
-            box-sizing: border-box;
-        }
+      .side1 {
+        background: linear-gradient(
+          to left,
+          rgba(0, 0, 0, 0.1),
+          rgb(247, 245, 235) 0em
+        );
+        padding: 2em;
+        box-sizing: border-box;
+      }
 
-        .side1 {
-            background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgb(247, 245, 235) 0.8em);
-            padding: 1em;
-            box-sizing: border-box;
-        }
+      .page:first-of-type .side0 {
+        box-shadow: -10px 0 10px -6px rgba(0, 0, 0, 0.3);
+      }
 
-        .page:first-of-type .side0 {
-            box-shadow: -10px 0 10px -6px rgba(0, 0, 0, 0.3);
-        }
+      .page:last-of-type .side1 {
+        box-shadow: 10px 0 10px -6px rgba(0, 0, 0, 0.3);
+      }
 
-        .page:last-of-type .side1 {
-            box-shadow: 10px 0 10px -6px rgba(0, 0, 0, 0.3);
-        }
+      #p0s1 {
+        border-top: 20px solid #1e1e1e;
+        border-bottom: 20px solid #1e1e1e;
+        border-left: 20px solid #1e1e1e;
+      }
+      #p1s0 {
+        background-color: white;
+        /* background-image: url('https://allplayces.de/wp-content/uploads/2022/10/Jingle-Bells_mitNotenbuchstaben_v02.jpg'); */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
 
+      #p2s0 {
+        background-color: white;
+        /* background-image: url('https://allplayces.de/wp-content/uploads/2022/10/Jingle-Bells_mitL.jpg'); */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
 
-        #p1s0 {
-            background-color: white;
-            /* background-image: url('https://allplayces.de/wp-content/uploads/2022/10/Jingle-Bells_mitNotenbuchstaben_v02.jpg'); */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
+      #cover {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2),
+          -1px 4px 4px 0 rgba(0, 0, 0, 0.3);
+        background: #1e1e1e;
+        background: -moz-linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
+        background: -webkit-linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
+        background: linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e1e', endColorstr='#4f4f4f',GradientType=1 );
+        font-size: 3vw;
+        text-align: center;
+      }
 
-        #p2s0 {
-            background-color: white;
-            /* background-image: url('https://allplayces.de/wp-content/uploads/2022/10/Jingle-Bells_mitL.jpg'); */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
+      .side:hover {
+        cursor: pointer;
+      }
 
-        #cover {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            background: rgb(44, 44, 44);
-            font-size: 3vw;
-            text-align: center;
-        }
+      .page-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+      }
 
-        .side:hover {
-            cursor: pointer;
-        }
+      .wordHeading {
+        font-size: 2vw;
+      }
 
-        .page-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 18px;
-            text-align: center;
-            flex-direction: column;
-        }
+      .wordWrapping {
+        font-size: 1.2vw;
+      }
 
-        .wordHeading {
-            font-size: 2vw;
-        }
-
-        .wordWrapping {
-            font-size: 1.5vw;
-        }
-
-        .bookmarks {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 2vw;
-        }
+      .bookmarks {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2vw;
+      }
+      .bookmark-btn {
+        border-radius: 5px;
+        border: none;
+        margin: 15px;
+        background: #1e2235;
+        color: #f9faff;
+      }
+      .bookmark-btn svg {
+        filter: invert(97%) sepia(27%) saturate(6727%) hue-rotate(180deg)
+          brightness(113%) contrast(102%);
+        z-index: 0;
+      }
+      .bookmark-btn:hover {
+        cursor: pointer;
+        background: #141625;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="book">
-        <div class="page page0">
-            <div id="cover" class="side side0">Metaverse<br>
-                Escape Rooom<br>
-                Hilfesystem
-                <br>
-                <br>
-                ACHTUNG<br>
-                Öffne dieses Buch nur, wenn
-                du Hilfe beim Lösen der
-                Rätsel benötigtst
-            </div>
-            <div id="p0s1" class="side side1"></div>
+      <div class="page page0">
+        <div id="cover" class="side side0">
+          Metaverse<br />
+          Escape Rooom<br />
+          Hilfesystem
+          <br />
+          <br />
+          ACHTUNG<br />
+          Öffne dieses Buch nur, wenn du Hilfe beim Lösen der Rätsel benötigtst
         </div>
-        <div class="page page1">
-            <div id="p1s0" class="side side0 page-content">
-                <p><span class="wordHeading"><strong>Vorwort </strong></span></p>
-                <p><span class="wordWrapping">Um den Metaverse Escape Rooom zu l&ouml;sen und dadurch Weihnachten zu
-                        retten, hat dich Santa Claus um die Unterst&uuml;tzung bei 4 Aufgaben gebeten. Erst nach
-                        Absolvierung all dieser Tasks l&auml;sst sich die verschlossene T&uuml;r &ouml;ffnen - das
-                        f&uuml;nfte und finale R&auml;tsel. Auf den folgenden Doppelseitenseiten findtest du jeweils 3
-                        Hinweise zu den jeweiligen R&auml;tseln / Aufgaben. Der erste Hinweis ist noch sehr allgemein
-                        gehalten, der letzte verr&auml;t dir die L&ouml;sung. </span></p>
-                <p>&nbsp;</p>
-                <p><span class="wordWrapping">&Uuml;bersicht:</span></p>
-                <p><span class="wordWrapping">Santas 1. Aufgabe - das Weihnachtslied - Seite 1 </span></p>
-                <p><span class="wordWrapping">Santas 2. Aufgabe - die Geschenke - Seite 3</span></p>
-                <p><span class="wordWrapping">Santas 3. Aufgabe - die Essens-Bestellung - Seite 5 </span></p>
-                <p><span class="wordWrapping">Santas 4. Aufgabe - Mrs. Claus - Seite 7 Das letzte R&auml;tsel - die
-                        verschlossene T&uuml;r - Seite 9</span></p>
-
-            </div>
-            <div class="side side1">Rätsel 1</div>
-            <!--Rätsel 1 Seite 1-->
+        <div id="p0s1" class="side side1"></div>
+      </div>
+      <div class="page page1">
+        <div id="p1s0" class="side side0 page-content">
+          <p>
+            <span class="wordHeading"><strong>Vorwort </strong></span>
+          </p>
+          <p>
+            <span class="wordWrapping"
+              >Um den Metaverse Escape Rooom zu l&ouml;sen und dadurch
+              Weihnachten zu retten, hat dich Santa Claus um die
+              Unterst&uuml;tzung bei 4 Aufgaben gebeten. Erst nach Absolvierung
+              all dieser Tasks l&auml;sst sich die verschlossene T&uuml;r
+              &ouml;ffnen - das f&uuml;nfte und finale R&auml;tsel. Auf den
+              folgenden Doppelseitenseiten findtest du jeweils 3 Hinweise zu den
+              jeweiligen R&auml;tseln / Aufgaben. Der erste Hinweis ist noch
+              sehr allgemein gehalten, der letzte verr&auml;t dir die
+              L&ouml;sung.
+            </span>
+          </p>
+          <p>&nbsp;</p>
+          <p><span class="wordWrapping">&Uuml;bersicht:</span></p>
+          <p>
+            <span class="wordWrapping"
+              >Santas 1. Aufgabe - das Weihnachtslied - Seite 1
+            </span>
+          </p>
+          <p>
+            <span class="wordWrapping"
+              >Santas 2. Aufgabe - die Geschenke - Seite 3</span
+            >
+          </p>
+          <p>
+            <span class="wordWrapping"
+              >Santas 3. Aufgabe - die Essens-Bestellung - Seite 5
+            </span>
+          </p>
+          <p>
+            <span class="wordWrapping"
+              >Santas 4. Aufgabe - Mrs. Claus - Seite 7 Das letzte R&auml;tsel -
+              die verschlossene T&uuml;r - Seite 9</span
+            >
+          </p>
         </div>
-        <div class="page page2">
-            <div id="p2s0" class="side side0">page 2 side 0</div>
-            <!--Rätsel 1 Seite 2-->
-            <div id="p2s1" class="side side1">page 2 side 1</div>
+        <div class="side side1">
+          <p>
+            <span class="wordHeading"
+              ><strong
+                >Santas 1. Aufgabe <br />
+                das Weihnachtslied
+              </strong></span
+            >
+          </p>
+          <p>
+            <span class="wordWrapping"
+              ><strong>1. Hinweis </strong> <br />Du musst auf dem Piano ein
+              Weihnachtslied spielen. Doch wie? Eine verbrannte Notiz gibt dir
+              Auskunft.
+            </span>
+          </p>
+          <p>
+            <span class="wordWrapping"
+              ><strong>2. Hinweis </strong> <br />Im Kamin findest du eine
+              verbrannte Notiz. Setzt du diese zusammen findest du heraus, dass
+              lediglich jede zweite Note gespielt werden muss.
+            </span>
+          </p>
+          <img
+            style="height: 35%"
+            src="E:\Produktion\03_ePlayces\rooom\puzzle\Textnotiz_verbrannt_v02_KK.png"
+            alt=""
+          />
         </div>
-        <div class="page page3">
-            <div class="side side0">Rätsel 2</div>
-            <!--Rätsel 2 -->
-            <div class="side side1">page 3 side 1</div>
+        <!--Rätsel 1 Seite 1-->
+      </div>
+      <div class="page page2">
+        <div id="p2s0" class="side side0">
+          <p>
+            <span class="wordWrapping"
+              ><strong>3. Hinweis </strong> <br />Auf dem Piano muss Jingle
+              Bells gespielt werden. Wie du herausgefunden hast, jedoch nur jede
+              zweite Note: <br /><br />
+              Die richtige Reihenfolge lautet also:<br />
+              A F C C G D<br /><br />
+              Nach erfolgreichem Spielen erhältst du eine Zahl für die finale
+              Tür:<br />
+              Diese lautet VIER.
+            </span>
+          </p>
+          <img
+            style="height: 35%"
+            src="https://static.wixstatic.com/media/f397c8_a8cd334816d84268885b3671e8037710~mv2.jpg"
+            alt=""
+          />
         </div>
-        <div class="page page4">
-            <div class="side side0">Rätsel 3</div>
-            <!--Rätsel 3 -->
-            <div class="side side1">page 4 side 1</div>
+        <!--Rätsel 1 Seite 2-->
+        <div id="p2s1" class="side side1">
+          <p>
+            <span class="wordHeading"
+              ><strong
+                >Santas 2. Aufgabe <br />
+                die Geschenke
+              </strong></span
+            >
+          </p>
+          <p>
+            <span class="wordWrapping"
+              ><strong>1. Hinweis </strong> <br />Auf dem Fließband findest du
+              Geschenke mit farbigen Schleifen. Hast du diese in der richtigen
+              Reihenfolge ausgepackt?
+            </span>
+          </p>
+          <p>
+            <span class="wordWrapping"
+              ><strong>2. Hinweis </strong> <br />In den Geschenken findest du
+              heraus, für wen diese sind. Kombiniere die Reihenfolge – wie die
+              farbigen Geschenke geöffnet werden müssen, kannst du der Tafel
+              oberhalb des Fließbandes entnehmen - und die Buchstaben innerhalb
+              der Geschenke. Was verraten dir diese?
+            </span>
+          </p>
+          <img
+            style="height: 35%"
+            src="https://static.wixstatic.com/media/f397c8_7db0e20c86ca4f7f93cf31e743ab9331~mv2.jpg"
+            alt=""
+          />
         </div>
-        <div class="page page5">
-            <div class="side side0">Rätsel 4</div>
-            <!--Rätsel 4 -->
-            <div class="side side1">page 5 side 1</div>
+      </div>
+      <div class="page page3">
+        <div class="side side0">
+          <p>
+            <span class="wordWrapping"
+              ><strong>3. Hinweis </strong> <br />In den Geschenken findest du
+              heraus, für wen diese sind. Packst du diese in richtiger
+              Reihenfolge aus (diese lässt sich der Tafel oberhalb des
+              Fließbandes entnehmen) erhältst du folgende Informationen:
+              <br /><br />
+              für S.<br />
+              für E.<br />
+              für C.<br />
+              für H.<br />
+              für S.<br /><br />
+              Die Buchstaben sind wichtig. Sie verraten dir eine Zahl für die
+              finale Tür: Diese lautet SECHS.
+            </span>
+          </p>
         </div>
+        <!--Rätsel 2 -->
+        <div class="side side1">
+          <p>
+            <span class="wordHeading"
+              ><strong
+                >Santas 3. Aufgabe <br />
+                die Geschenke
+              </strong></span
+            >
+          </p>
+          <p>
+            <span class="wordWrapping"
+              ><strong>1. Hinweis </strong> <br />Um das Essen zu bestellen
+              musst du dich in den Laptop einloggen. Hierzu benötigst du ein
+              Passwort, welches man auf einer Notiz findet. Was bestellt werden
+              soll verrät dir ein Weihnachts-Menü.
+            </span>
+          </p>
+          <img
+            style="height: 65%"
+            src="E:\Produktion\03_ePlayces\rooom\Dateien\Hilfe\hilfeLaptop.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="page page4">
+        <div class="side side0">
+          <p>
+            <span class="wordWrapping"
+              ><strong>2. Hinweis </strong> <br />Du findest eine Notiz mit dem
+              Laptop Passwort. Teil die die vier Formen gedanklich je mit einem
+              Strich in der Mitte. So erhältst du das Passwort für den Laptop.
+              Dieses lautet: 2715
+            </span>
+          </p>
+          <p>
+            <span class="wordWrapping"
+              ><strong>3. Hinweis </strong> <br />Nachdem du dich mit dem
+              Passwort 2715 in den Laptop eingeloggt hast, musst du das Essen
+              bestellen. Wie du dem Weihnachts-Menü entnehmen kannst, soll
+              folgendes gegessen werden: Schmackhaftes Kürbissüppchen;
+              Entenbraten mit Rotkohl und Klößen; Bratapfel. Wähl diese Gerichte
+              aus den neun Bildern aus. Sobald du die Bestellung abgesendet
+              hast, erhältst du eine Zahl für die finale Tür: Diese lautet NEUN.
+            </span>
+          </p>
+          <img
+            style="height: 35%"
+            src="E:\Produktion\03_ePlayces\rooom\puzzle\Textnotiz_verbrannt_v02_KK.png"
+            alt=""
+          />
+        </div>
+        <!--Rätsel 3 -->
+        <div class="side side1">
+          <p>
+            <span class="wordHeading"
+              ><strong
+                >Santas 4. Aufgabe <br />
+                die Geschenke
+              </strong></span
+            >
+          </p>
+          <p>
+            <span class="wordWrapping"
+              ><strong>1. Hinweis </strong> <br />Hast du bereits die
+              Visitenkarte von Mrs. Claus gefunden?
+            </span>
+          </p>
+          <p>
+            <span class="wordWrapping"
+              ><strong>2. Hinweis </strong> <br />Hast du bereits Mrs. Claus
+              kontaktiert? Sie freut sich wahnsinnig über Post und ist unter
+              mrs.claus@eplayces.- de zu erreichen.
+            </span>
+          </p>
+          <img
+            style="height: 35%"
+            src="https://static.wixstatic.com/media/f397c8_0066bacfdb294bf78bd882ab6b289f9d~mv2.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="page page4">
+        <div class="side side0">
+          <p>
+            <span class="wordWrapping"
+              ><strong>3. Hinweis </strong> <br />Wenn du Mrs. Claus eine E-Mail
+              schreibst erhältst du folgende Antwort:<br /><br />
+              Hallo!<br />
+              Schön, dass du dich meldest!<br />
+              Die letzte Zahl des Zahlenschlosses ist eine FÜNF!<br /><br />
+              LG<br />
+              Mrs. Claus
+            </span>
+          </p>
+        </div>
+        <!--Rätsel 3 -->
+        <div class="side side1">
+          <p>
+            <span class="wordHeading"
+              ><strong
+                >Santas 5. Aufgabe <br />
+                die Geschenke
+              </strong></span
+            >
+          </p>
+          <p>
+            <span class="wordWrapping"
+              ><strong>1. Hinweis </strong> <br />Um den Code für dieses
+              Zahlenschloss zu ermitteln, musst du alle vier vorherigen Aufgaben
+              erledigt haben. Die richtige Reihenfolge verraten dir die Symbole
+              auf der Tür.
+            </span>
+          </p>
+          <img
+            style="height: 35%"
+            src="https://static.wixstatic.com/media/f397c8_4ccacbf79aba456aa32b637b46015b0b~mv2.png"
+            alt=""
+          />
+          <p>
+            <span class="wordWrapping"
+              ><strong>2. Hinweis </strong> <br />Die Symbole geben an in
+              welcher Reihenfolge die ermittelten Zahlen eingegeben werden
+              müssen. Jedes Symbol steht hierbei für eine von Santas Aufgaben.
+              Auch die Objekte im Raum sind mit diesen Symbolen gekennzeichnet.
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="page page5">
+        <div class="side side0">
+          <p>
+            <span class="wordWrapping"
+              ><strong>3. Hinweis </strong> <br />Das erste Symbol steht für
+              Santas 1. Aufgabe - das Weihnachtslied Das zweite Symbol für
+              Santas 2. Aufgabe - die Geschenke Das dritte Symbol steht Santas
+              3. Aufgabe - die Essens-Bestellungund das vierte für Santas 4.
+              Aufgabe - Mrs. Claus Der richtige Code lautet somit: <br /><br />
+              VIER – SECHS – NEUN - FÜNF
+            </span>
+          </p>
+          <img
+            style="height: 35%"
+            src="https://static.wixstatic.com/media/f397c8_f4d75106fb5046ac9cac6067efba5e18~mv2.png"
+            alt=""
+          />
+        </div>
+        <!--Rätsel 4 -->
+        <div class="side side1 back-cover"></div>
+      </div>
     </div>
     <div class="bookmarks">
-        <button id="sol1" onclick="bookmark(this.id)">Rätsel 1</button>
-        <button id="sol2" onclick="bookmark(this.id)">Rätsel 2</button>
-        <button id="sol3" onclick="bookmark(this.id)">Rätsel 3</button>
-        <button id="sol4" onclick="bookmark(this.id)">Rätsel 4</button>
+      <button id="sol1" class="bookmark-btn" onclick="bookmark(this.id)">
+        <div class="icon">
+          <svg viewBox="0 0 36 36">
+            <path
+              class="filled"
+              d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z"
+            />
+            <path
+              class="default"
+              d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z"
+            />
+            <path
+              class="corner"
+              d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z"
+            />
+          </svg>
+        </div>
+        Rätsel 1
+      </button>
+      <button id="sol2" class="bookmark-btn" onclick="bookmark(this.id)">
+        <div class="icon">
+          <svg viewBox="0 0 36 36">
+            <path
+              class="filled"
+              d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z"
+            />
+            <path
+              class="default"
+              d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z"
+            />
+            <path
+              class="corner"
+              d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z"
+            />
+          </svg>
+        </div>
+        Rätsel 2
+      </button>
+      <button id="sol3" class="bookmark-btn" onclick="bookmark(this.id)">
+        <div class="icon">
+          <svg viewBox="0 0 36 36">
+            <path
+              class="filled"
+              d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z"
+            />
+            <path
+              class="default"
+              d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z"
+            />
+            <path
+              class="corner"
+              d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z"
+            />
+          </svg>
+        </div>
+        Rätsel 3
+      </button>
+      <button id="sol4" class="bookmark-btn" onclick="bookmark(this.id)">
+        <div class="icon">
+          <svg viewBox="0 0 36 36">
+            <path
+              class="filled"
+              d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z"
+            />
+            <path
+              class="default"
+              d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z"
+            />
+            <path
+              class="corner"
+              d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z"
+            />
+          </svg>
+        </div>
+        Rätsel 4
+      </button>
+      <button id="sol5" class="bookmark-btn" onclick="bookmark(this.id)">
+        <div class="icon">
+          <svg viewBox="0 0 36 36">
+            <path
+              class="filled"
+              d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z"
+            />
+            <path
+              class="default"
+              d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z"
+            />
+            <path
+              class="corner"
+              d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z"
+            />
+          </svg>
+        </div>
+        Rätsel 5
+      </button>
     </div>
     <script>
-        const pages = Array.from(document.querySelectorAll(".book .page"));
-        const book = document.querySelector(".book");
-        let leftStack = [];
-        let rightStack = Array.from(pages).reverse(); // [p3,p2,p1,p0]
+      const pages = Array.from(document.querySelectorAll(".book .page"));
+      const book = document.querySelector(".book");
+      let leftStack = [];
+      let rightStack = Array.from(pages).reverse(); // [p3,p2,p1,p0]
 
-        updatePagesDepth(rightStack);
-        console.log(leftStack);
-        console.log(rightStack);
-        for (const page of pages) {
-            page.addEventListener("click", function (e) {
-                if (e.currentTarget.classList.contains("flip")) { //clicked on left stack page
-                    const page = leftStack.pop();
-                    rightStack.push(page);
-                    page.classList.remove("flip");
-                    updatePagesDepth(rightStack);
-                }
-                else { // clicked on right stack page
-                    const page = rightStack.pop();
-                    leftStack.push(page);
-                    page.classList.add("flip");
-                    updatePagesDepth(leftStack);
-                    console.log(rightStack);
-                }
-            });
+      updatePagesDepth(rightStack);
+      console.log(leftStack);
+      console.log(rightStack);
+      for (const page of pages) {
+        page.addEventListener("click", function (e) {
+          if (e.currentTarget.classList.contains("flip")) {
+            //clicked on left stack page
+            const page = leftStack.pop();
+            rightStack.push(page);
+            page.classList.remove("flip");
+            updatePagesDepth(rightStack);
+          } else {
+            // clicked on right stack page
+            const page = rightStack.pop();
+            leftStack.push(page);
+            page.classList.add("flip");
+            updatePagesDepth(leftStack);
+            console.log(rightStack);
+          }
+        });
+      }
+
+      function updatePagesDepth(stack) {
+        // first el = farthest
+        for (const [i, page] of stack.entries()) {
+          if (stack == leftStack) {
+            page.style.transform = `rotateY(-180deg) translateZ(${-i}px)`;
+          } else {
+            page.style.transform = `rotateY(0) translateZ(${i}px)`;
+          }
         }
+      }
 
-        function updatePagesDepth(stack) { // first el = farthest
-            for (const [i, page] of stack.entries()) {
-                if (stack == leftStack) {
-                    page.style.transform = `rotateY(-180deg) translateZ(${-i}px)`;
-                }
-                else {
-                    page.style.transform = `rotateY(0) translateZ(${i}px)`;
-                }
+      async function bookmark(id) {
+        switch (id) {
+          case "sol1":
+            if (rightStack.length >= 5) {
+              for (i = rightStack.length; i >= 6; i--) {
+                await delay(200);
+                const page = rightStack.pop();
+                leftStack.push(page);
+                page.classList.add("flip");
+                updatePagesDepth(leftStack);
+              }
+            } else if (leftStack.length >= 2) {
+              for (i = leftStack.length; i >= 3; i--) {
+                await delay(200);
+                const page = leftStack.pop();
+                rightStack.push(page);
+                page.classList.remove("flip");
+                updatePagesDepth(rightStack);
+              }
             }
-        }
-
-        async function bookmark(id) {
-            switch (id) {
-                case 'sol1':
-                    if (rightStack.length >= 4) {
-                        for (i = rightStack.length; i >= 5; i--) {
-                            await delay(200);
-                            const page = rightStack.pop();
-                            leftStack.push(page);
-                            page.classList.add("flip");
-                            updatePagesDepth(leftStack);
-                        }
-                    }
-                    break;
-                case 'sol2':
-                if (rightStack.length >= 3) {
-                        for (i = rightStack.length; i >= 4; i--) {
-                            await delay(200);
-                            const page = rightStack.pop();
-                            leftStack.push(page);
-                            page.classList.add("flip");
-                            updatePagesDepth(leftStack);
-                        }
-                    }
-                    break;
-                case 'sol3':
-                if (rightStack.length >= 2) {
-                        for (i = rightStack.length; i >= 3; i--) {
-                            await delay(200);
-                            const page = rightStack.pop();
-                            leftStack.push(page);
-                            page.classList.add("flip");
-                            updatePagesDepth(leftStack);
-                        }
-                    }
-                    break;
-                case 'sol4':
-                if (rightStack.length >= 1) {
-                        for (i = rightStack.length; i >= 2; i--) {
-                            await delay(200);
-                            const page = rightStack.pop();
-                            leftStack.push(page);
-                            page.classList.add("flip");
-                            updatePagesDepth(leftStack);
-                        }
-                    }
-                    break;
+            break;
+          case "sol2":
+            if (rightStack.length >= 4) {
+              for (i = rightStack.length; i >= 5; i--) {
+                await delay(200);
+                const page = rightStack.pop();
+                leftStack.push(page);
+                page.classList.add("flip");
+                updatePagesDepth(leftStack);
+              }
+            } else if (leftStack.length >= 3) {
+              for (i = leftStack.length; i >= 4; i--) {
+                await delay(200);
+                const page = leftStack.pop();
+                rightStack.push(page);
+                page.classList.remove("flip");
+                updatePagesDepth(rightStack);
+              }
             }
+            break;
+          case "sol3":
+            if (rightStack.length >= 3) {
+              for (i = rightStack.length; i >= 4; i--) {
+                await delay(200);
+                const page = rightStack.pop();
+                leftStack.push(page);
+                page.classList.add("flip");
+                updatePagesDepth(leftStack);
+              }
+            } else if (leftStack.length >= 4) {
+              for (i = leftStack.length; i >= 5; i--) {
+                await delay(200);
+                const page = leftStack.pop();
+                rightStack.push(page);
+                page.classList.remove("flip");
+                updatePagesDepth(rightStack);
+              }
+            }
+            break;
+          case "sol4":
+            if (rightStack.length >= 2) {
+              for (i = rightStack.length; i >= 3; i--) {
+                await delay(200);
+                const page = rightStack.pop();
+                leftStack.push(page);
+                page.classList.add("flip");
+                updatePagesDepth(leftStack);
+              }
+            } else if (leftStack.length >= 5) {
+              for (i = leftStack.length; i >= 6; i--) {
+                await delay(200);
+                const page = leftStack.pop();
+                rightStack.push(page);
+                page.classList.remove("flip");
+                updatePagesDepth(rightStack);
+              }
+            }
+            break;
+          case "sol5":
+            if (rightStack.length >= 1) {
+              for (i = rightStack.length; i >= 2; i--) {
+                await delay(200);
+                const page = rightStack.pop();
+                leftStack.push(page);
+                page.classList.add("flip");
+                updatePagesDepth(leftStack);
+              }
+            } else if (leftStack.length >= 6) {
+              for (i = leftStack.length; i >= 7; i--) {
+                await delay(200);
+                const page = leftStack.pop();
+                rightStack.push(page);
+                page.classList.remove("flip");
+                updatePagesDepth(rightStack);
+              }
+            }
+            break;
         }
+      }
 
-        function delay(time) {
-            return new Promise(resolve => setTimeout(resolve, time));
-        }
+      function delay(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
     </script>
-</body>
-
+  </body>
 </html>
