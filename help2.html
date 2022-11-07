@@ -179,7 +179,7 @@ preserntaiton
                         verschlossene T&uuml;r - Seite 9</span></p>
 
             </div>
-            <div class="side side1">page 1 side 1</div>
+            <div class="side side1">Rätsel 1</div>
             <!--Rätsel 1 Seite 1-->
         </div>
         <div class="page page2">
@@ -188,17 +188,17 @@ preserntaiton
             <div id="p2s1" class="side side1">page 2 side 1</div>
         </div>
         <div class="page page3">
-            <div class="side side0">page 3 side 0</div>
+            <div class="side side0">Rätsel 2</div>
             <!--Rätsel 2 -->
             <div class="side side1">page 3 side 1</div>
         </div>
         <div class="page page4">
-            <div class="side side0">page 4 side 0</div>
+            <div class="side side0">Rätsel 3</div>
             <!--Rätsel 3 -->
             <div class="side side1">page 4 side 1</div>
         </div>
         <div class="page page5">
-            <div class="side side0">page 5 side 0</div>
+            <div class="side side0">Rätsel 4</div>
             <!--Rätsel 4 -->
             <div class="side side1">page 5 side 1</div>
         </div>
@@ -208,7 +208,6 @@ preserntaiton
         <button id="sol2" onclick="bookmark(this.id)">Rätsel 2</button>
         <button id="sol3" onclick="bookmark(this.id)">Rätsel 3</button>
         <button id="sol4" onclick="bookmark(this.id)">Rätsel 4</button>
-        <button id="sol5" onclick="bookmark(this.id)">Rätsel 5</button>
     </div>
     <script>
         const pages = Array.from(document.querySelectorAll(".book .page"));
@@ -226,13 +225,13 @@ preserntaiton
                     rightStack.push(page);
                     page.classList.remove("flip");
                     updatePagesDepth(rightStack);
-                    console.log(leftStack);
                 }
                 else { // clicked on right stack page
                     const page = rightStack.pop();
                     leftStack.push(page);
                     page.classList.add("flip");
                     updatePagesDepth(leftStack);
+                    console.log(rightStack);
                 }
             });
         }
@@ -248,29 +247,57 @@ preserntaiton
             }
         }
 
-        function bookmark(id) {
+        async function bookmark(id) {
             switch (id) {
                 case 'sol1':
                     if (rightStack.length >= 4) {
                         for (i = rightStack.length; i >= 5; i--) {
-                            setTimeout(function () {
-                            }, 200);
+                            await delay(200);
                             const page = rightStack.pop();
                             leftStack.push(page);
                             page.classList.add("flip");
                             updatePagesDepth(leftStack);
                         }
-                    } 
+                    }
                     break;
                 case 'sol2':
+                if (rightStack.length >= 3) {
+                        for (i = rightStack.length; i >= 4; i--) {
+                            await delay(200);
+                            const page = rightStack.pop();
+                            leftStack.push(page);
+                            page.classList.add("flip");
+                            updatePagesDepth(leftStack);
+                        }
+                    }
                     break;
                 case 'sol3':
+                if (rightStack.length >= 2) {
+                        for (i = rightStack.length; i >= 3; i--) {
+                            await delay(200);
+                            const page = rightStack.pop();
+                            leftStack.push(page);
+                            page.classList.add("flip");
+                            updatePagesDepth(leftStack);
+                        }
+                    }
                     break;
                 case 'sol4':
-                    break;
-                case 'sol5':
+                if (rightStack.length >= 1) {
+                        for (i = rightStack.length; i >= 2; i--) {
+                            await delay(200);
+                            const page = rightStack.pop();
+                            leftStack.push(page);
+                            page.classList.add("flip");
+                            updatePagesDepth(leftStack);
+                        }
+                    }
                     break;
             }
+        }
+
+        function delay(time) {
+            return new Promise(resolve => setTimeout(resolve, time));
         }
     </script>
 </body>
