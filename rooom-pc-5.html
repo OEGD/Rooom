@@ -1,7 +1,4 @@
-<script
-  type="text/javascript"
-  src="https://code.jquery.com/jquery-1.7.1.min.js"
-></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 <style>
   .formClass {
     background: #d3d3d3;
@@ -122,7 +119,7 @@
     margin: 8px 30px 0px 30px;
     padding: 4px 8px;
     background: #d13202;
-    color: #691900;
+    color: #2b0f07;
     font-size: 20px;
     cursor: pointer;
     outline: none;
@@ -130,14 +127,14 @@
   }
 
   #quiz button:hover {
-    background: #691900;
+    background: #2b0f07;
     color: #fff;
   }
 
   #quiz button:disabled {
     opacity: 0.5;
     background: #d13202;
-    color: #691900;
+    color: #2b0f07;
     cursor: default;
   }
 
@@ -176,11 +173,11 @@
   }
 
   #question label:hover {
-    background: #691900;
+    background: #2b0f07;
   }
 
-  #question input[type="checkbox"]:checked + label {
-    background: #691900;
+  #question input[type="checkbox"]:checked+label {
+    background: #2b0f07;
   }
 
   #quiz-results {
@@ -198,7 +195,7 @@
 
   #quiz-results-message {
     display: block;
-    color: #691900;
+    color: #2b0f07;
     font-size: 20px;
     font-weight: bold;
   }
@@ -210,7 +207,7 @@
   }
 
   #quiz-results-score b {
-    color: #691900;
+    color: #2b0f07;
     font-weight: 600;
     font-size: 20px;
   }
@@ -220,19 +217,22 @@
     margin: 8px 0px 0px 8px;
     padding: 4px 8px;
     background: #d13202;
-    color: #691900;
+    color: #2b0f07;
     font-size: 20px;
     cursor: pointer;
     outline: none;
   }
+
   #img {
     display: flex;
     justify-content: center;
   }
+
   .number {
     margin: auto;
     width: 22%;
   }
+
   #laptopContainer {
     width: 100%;
     height: 100%;
@@ -244,6 +244,7 @@
     justify-content: center;
     align-items: center;
   }
+
   #topBar {
     background-color: rgb(44, 44, 44);
     width: 100%;
@@ -253,19 +254,24 @@
     justify-content: flex-start;
     align-items: center;
   }
+
   input[type="checkbox"] {
     display: none;
   }
+
   #topBar img {
     height: 64%;
   }
+
   #logInBtn {
     margin-top: 10px;
     font: 20px "Nunito", sans-serif;
   }
+
   .p {
     font: 20px "Nunito", sans-serif;
   }
+
   #pwInput1 {
     margin-bottom: 10px;
     font: 20px "Nunito", sans-serif;
@@ -274,28 +280,14 @@
 <div id="laptopContainer" class="middle">
   <div id="logIn" class="container">
     <div id="topBar">
-      <img
-        src="https://static.wixstatic.com/media/f397c8_3d1c5558769f4ad28df34c01118b3f06~mv2.png"
-        alt=""
-      />
+      <img src="https://static.wixstatic.com/media/f397c8_3d1c5558769f4ad28df34c01118b3f06~mv2.png" alt="" />
       <p style="margin-left: 20px">LIEFERINI</p>
     </div>
     <form id="pwAbfrage" class="formClass">
       <p class="p">Willkommen</p>
-      <input
-        id="pwInput1"
-        class="input"
-        type="password"
-        placeholder="Passwort"
-      /><br />
+      <input id="pwInput1" class="input" type="password" placeholder="Passwort" /><br />
       <span id="signIn" class="hide wrong">Falsches Passwort</span><br />
-      <input
-        id="logInBtn"
-        class="input"
-        type="button"
-        value="Log in"
-        onclick="checkLogIN()"
-      /><br />
+      <input id="logInBtn" class="input" type="button" value="Log in" onclick="checkLogIN()" /><br />
     </form>
 
     <div id="question" class="questionClass hide">
@@ -305,10 +297,7 @@
   <div id="content" class="hide">
     <div id="logIn" class="container">
       <div id="topBar">
-        <img
-          src="https://static.wixstatic.com/media/f397c8_3d1c5558769f4ad28df34c01118b3f06~mv2.png"
-          alt=""
-        />
+        <img src="https://static.wixstatic.com/media/f397c8_3d1c5558769f4ad28df34c01118b3f06~mv2.png" alt="" />
         <p style="margin-left: 20px">LIEFERINI</p>
       </div>
       <div id="quizhtml">
@@ -333,17 +322,10 @@
   <div id="img" class="hide">
     <div id="logIn" class="container">
       <div id="topBar">
-        <img
-          src="https://static.wixstatic.com/media/f397c8_3d1c5558769f4ad28df34c01118b3f06~mv2.png"
-          alt=""
-        />
+        <img src="https://static.wixstatic.com/media/f397c8_3d1c5558769f4ad28df34c01118b3f06~mv2.png" alt="" />
         <p style="margin-left: 20px">LIEFERINI</p>
       </div>
-      <img
-        class="number"
-        src="https://allplayces.de/wp-content/uploads/2022/09/Weihnachtszahl_9_v01_KK.png"
-        alt=""
-      />
+      <img class="number" src="https://allplayces.de/wp-content/uploads/2022/09/Weihnachtszahl_9_v01_KK.png" alt="" />
     </div>
   </div>
 </div>
@@ -510,6 +492,12 @@
 
         $("#quiz-retry-button").click(function (reset) {
           renderQuiz();
+          var checkboxes = document.getElementsByName("choices");
+          var checkboxesChecked = [];
+          var choicesArray = document.getElementsByName('choices');
+          for (i = 0; i < choicesArray.length; i++) {
+            choicesArray[i].checked = false;
+          }
         });
       }
 
