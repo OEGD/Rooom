@@ -56,7 +56,7 @@
       preserntaiton
       */
       body {
-        background: slategray;
+        /*background: url('https://static.wixstatic.com/media/f397c8_07a47bcb9a104ccf84665f064e0d4a0c~mv2.jpg');*/
       }
 
       .book {
@@ -107,11 +107,16 @@
       .back-cover {
         box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2),
           -1px 4px 4px 0 rgba(0, 0, 0, 0.3);
-        background: #1e1e1e !important;
-        background: -moz-linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
-        background: -webkit-linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
-        background: linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e1e', endColorstr='#4f4f4f',GradientType=1 );
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2),
+          -1px 4px 4px 0 rgba(0, 0, 0, 0.3);
+          background: url("https://static.wixstatic.com/media/f397c8_807520c4ed7d4a5aa30b55d599f4c14c~mv2.jpg"), #7e0f12 !important;
+        background-size: 50% !important;
+        background-blend-mode: multiply;
+        /* background: #7e0f12 !important;
+        background: -moz-linear-gradient(45deg, #7e0f12 0%, #88292c 100%);
+        background: -webkit-linear-gradient(45deg, #7e0f12 0%, #88292c 100%);
+        background: linear-gradient(45deg, #7e0f12 0%, #88292c 100%); */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7e0f12', endColorstr='#88292c',GradientType=1 );
         height: 82vh;
       }
       .back-cover:before {
@@ -159,23 +164,27 @@
       }
 
       .side0 {
-        background: linear-gradient(
+        background:url("https://static.wixstatic.com/media/f397c8_721e480ccdff4545ba91a66b7e452df9~mv2.jpg"), linear-gradient(
           to right,
           rgba(0, 0, 0, 0.1),
           rgb(247, 245, 235) 0.5em
         );
         padding: 2em;
         box-sizing: border-box;
+        background-blend-mode: multiply;
+        background-size: 50%;
       }
 
       .side1 {
-        background: linear-gradient(
+        background: url("https://static.wixstatic.com/media/f397c8_721e480ccdff4545ba91a66b7e452df9~mv2.jpg"), linear-gradient(
           to left,
           rgba(0, 0, 0, 0.1),
           rgb(247, 245, 235) 0em
         );
         padding: 2em;
         box-sizing: border-box;
+        background-blend-mode: multiply;
+        
       }
 
       .page:first-of-type .side0 {
@@ -187,9 +196,9 @@
       }
 
       #p0s1 {
-        border-top: 10px solid #1e1e1e;
-        border-bottom: 10px solid #1e1e1e;
-        border-left: 10px solid #1e1e1e;
+        border-top: 10px solid #7e0f12;
+        border-bottom: 10px solid #7e0f12;
+        border-left: 10px solid #7e0f12;
         height: 82vh;
       }
       #p1s0 {
@@ -213,14 +222,17 @@
         justify-content: center;
         align-items: center;
         height: 82vh;
-        color: white;
+        color: #bc6d4c;
+        font-family: 'NSimSun';
         box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2),
           -1px 4px 4px 0 rgba(0, 0, 0, 0.3);
-        background: #1e1e1e;
-        background: -moz-linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
-        background: -webkit-linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
-        background: linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e1e1e', endColorstr='#4f4f4f',GradientType=1 );
+          /* background: -moz-linear-gradient(45deg, #7e0f12 0%, #88292c 100%);
+          background: -webkit-linear-gradient(45deg, #7e0f12 0%, #88292c 100%);
+          background: linear-gradient(45deg, #7e0f12 0%, #88292c 100%); */
+        background: url("https://static.wixstatic.com/media/f397c8_807520c4ed7d4a5aa30b55d599f4c14c~mv2.jpg"), #7e0f12 ;
+        background-size: 50%;
+        background-blend-mode: multiply;
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7e0f12', endColorstr='#88292c',GradientType=1 );
         font-size: 3vw;
         text-align: center;
       }
@@ -274,9 +286,9 @@
       }
       .last-page{
         height: 82vh;
-        border-top: 10px solid #1e1e1e;
-        border-bottom: 10px solid #1e1e1e;
-        border-right: 10px solid #1e1e1e;
+        border-top: 10px solid #7e0f12;
+        border-bottom: 10px solid #7e0f12;
+        border-right: 10px solid #7e0f12;
       }
       .page5{
         bottom: 2vh;

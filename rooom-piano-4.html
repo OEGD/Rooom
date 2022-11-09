@@ -384,13 +384,15 @@ preserntaiton
     }
 
     .side0 {
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.1), lemonchiffon 0.5em);
+      /* background: linear-gradient(to right, rgba(0, 0, 0, 0.1), lemonchiffon 0.5em); */
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.1), white 0.8em);
       padding: 1em;
       box-sizing: border-box;
     }
 
     .side1 {
-      background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgb(224, 205, 176) 0.8em);
+      /* background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgb(224, 205, 176) 0.8em); */
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.1), white 0.8em);
       padding: 1em;
       box-sizing: border-box;
     }
@@ -428,12 +430,63 @@ preserntaiton
       background: black;
       font-size: 5vw;
     }
-    .set-container{
+
+    .set-container {
       display: flex;
       justify-content: center;
       align-items: center;
       background: no-repeat center/100% url("https://static.wixstatic.com/media/f397c8_963dbac622bd4804995849fc4c1d2874~mv2.jpg");
       width: 99vw;
+    }
+
+    #cover {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2),
+        -1px 4px 4px 0 rgba(0, 0, 0, 0.3);
+      background: #1e1e1e;
+      background: -moz-linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
+      background: -webkit-linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
+      background: linear-gradient(45deg, #1e1e1e 0%, #4f4f4f 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e1e1e', endColorstr='#4f4f4f', GradientType=1);
+      font-size: 3vw;
+      text-align: center;
+    }
+
+    #cover:before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 30px;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      border-radius: 2px 0 0 2px;
+      /* http://colorzilla.com/gradient-editor/#ffffff+45,000000+49&0+0,0.15+20,0.15+84,0+100 */
+      background: -moz-linear-gradient(left,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.1) 20%,
+          rgba(255, 255, 255, 0.1) 45%,
+          rgba(0, 0, 0, 0.15) 49%,
+          rgba(0, 0, 0, 0.15) 84%,
+          rgba(0, 0, 0, 0) 100%);
+      background: -webkit-linear-gradient(left,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.1) 20%,
+          rgba(255, 255, 255, 0.1) 45%,
+          rgba(0, 0, 0, 0.15) 49%,
+          rgba(0, 0, 0, 0.15) 84%,
+          rgba(0, 0, 0, 0) 100%);
+      background: linear-gradient(to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.1) 20%,
+          rgba(255, 255, 255, 0.1) 45%,
+          rgba(0, 0, 0, 0.15) 49%,
+          rgba(0, 0, 0, 0.15) 84%,
+          rgba(0, 0, 0, 0) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#00000000', GradientType=1);
     }
   </style>
 </head>
@@ -443,8 +496,16 @@ preserntaiton
     <div class="noten">
       <div class="book">
         <div class="page page0">
-          <div id="p0s0" class="side side0">Noten</div>
+          <div id="cover" class="side side0">Noten</div>
           <div id="p0s1" class="side side1"></div>
+        </div>
+        <div class="page pageX">
+          <div class="side side0"></div>
+          <div class="side side1"></div>
+        </div>
+        <div class="page pageX">
+          <div class="side side0"></div>
+          <div class="side side1"></div>
         </div>
         <div class="page page1">
           <div id="p1s0" class="side side0"></div>
@@ -645,12 +706,24 @@ preserntaiton
     let turned = false;
 
     updatePagesDepth(rightStack);
-    setTimeout(function () {
-      const firstPage = pages[0] = rightStack.pop();
-      leftStack.push(firstPage);
-      firstPage.classList.add("flip");
-      updatePagesDepth(leftStack);
-    }, 500);
+    // setTimeout(function () {
+    //   const firstPage = pages[0] = rightStack.pop();
+    //   leftStack.push(firstPage);
+    //   firstPage.classList.add("flip");
+    //   updatePagesDepth(leftStack);
+    // }, 500);
+    pageready();
+
+    async function pageready() {
+      await delay(200);
+      for (i = rightStack.length; i >= 3; i--) {
+        await delay(100);
+        const page = rightStack.pop();
+        leftStack.push(page);
+        page.classList.add("flip");
+        updatePagesDepth(leftStack);
+      }
+    }
 
 
     function nextPage() {
@@ -688,6 +761,10 @@ preserntaiton
           page.style.transform = `rotateY(0) translateZ(${i}px)`;
         }
       }
+    }
+
+    function delay(time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
     }
   </script>
 </body>
