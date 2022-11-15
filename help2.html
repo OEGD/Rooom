@@ -20,7 +20,7 @@
       transform-style: preserve-3d;
     }
 
-    .page {
+    .book-page {
       position: absolute;
       width: 50%;
       height: 100%;
@@ -62,7 +62,7 @@
 
     .book {
       width: 90vw;
-      height: 80vh;
+      height: 64vh;
       perspective: 800px;
       z-index: 2;
     }
@@ -114,7 +114,7 @@
         background: -webkit-linear-gradient(45deg, #7e0f12 0%, #88292c 100%);
         background: linear-gradient(45deg, #7e0f12 0%, #88292c 100%); */
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7e0f12', endColorstr='#88292c', GradientType=1);
-      height: 82vh;
+      height: 66vh;
     }
 
     .back-cover:before {
@@ -151,7 +151,7 @@
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#00000000', GradientType=1);
     }
 
-    .page {
+    .book-page {
       transition: transform 1s;
       transform-origin: left center;
       background: url("https://static.wixstatic.com/media/f397c8_58a609de3e184149bb623441b70b0b84~mv2.jpg"), white;
@@ -169,11 +169,11 @@
       box-sizing: border-box;
     }
 
-    .page:first-of-type .side0 {
+    .book-page:first-of-type .side0 {
       box-shadow: -10px 0 10px -6px rgba(0, 0, 0, 0.3);
     }
 
-    .page:last-of-type .side1 {
+    .book-page:last-of-type .side1 {
       box-shadow: 10px 0 10px -6px rgba(0, 0, 0, 0.3);
     }
 
@@ -181,7 +181,7 @@
       border-top: 10px solid #7e0f12;
       border-bottom: 10px solid #7e0f12;
       border-left: 10px solid #7e0f12;
-      height: 82vh;
+      height: 66vh;
     }
 
     #p1s0 {
@@ -204,7 +204,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 82vh;
+      height: 66vh;
       color: #bc6d4c;
       font-family: 'NSimSun';
       box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2),
@@ -216,7 +216,7 @@
       background-size: 50%;
       background-blend-mode: multiply;
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7e0f12', endColorstr='#88292c', GradientType=1);
-      font-size: 3vw;
+      font-size: 2vw;
       text-align: center;
     }
 
@@ -233,11 +233,11 @@
     }
 
     .wordHeading {
-      font-size: 2vw;
+      font-size: 1.8vw;
     }
 
     .wordWrapping {
-      font-size: 1.2vw;
+      font-size: 1vw;
     }
 
     .bookmarks {
@@ -272,7 +272,7 @@
     }
 
     .last-page {
-      height: 82vh;
+      height: 66vh;
       border-top: 10px solid #7e0f12;
       border-bottom: 10px solid #7e0f12;
       border-right: 10px solid #7e0f12;
@@ -309,7 +309,7 @@
 
 <body>
   <div class="book">
-    <div class="page page0">
+    <div class="book-page page0">
       <div id="cover" class="side side0">
         Metaverse<br />
         Escape Rooom<br />
@@ -321,7 +321,7 @@
       </div>
       <div id="p0s1" class="side side1"></div>
     </div>
-    <div class="page page1">
+    <div class="book-page page1">
       <div id="p1s0" class="side side0 page-content fold">
         <p>
           <span class="wordHeading"><strong>Vorwort </strong></span>
@@ -378,7 +378,7 @@
       </div>
       <!--Rätsel 1 Seite 1-->
     </div>
-    <div class="page page2">
+    <div class="book-page page2">
       <div id="p2s0" class="side side0 fold">
         <p>
           <span class="wordWrapping"><strong>3. Hinweis </strong> <br />Auf dem Piano muss Jingle
@@ -419,7 +419,7 @@
           src="https://static.wixstatic.com/media/f397c8_7db0e20c86ca4f7f93cf31e743ab9331~mv2.jpg" alt="" />
       </div>
     </div>
-    <div class="page page3">
+    <div class="book-page page3">
       <div class="side side0 fold">
         <p>
           <span class="wordWrapping"><strong>3. Hinweis </strong> <br />In den Geschenken findest du
@@ -454,7 +454,7 @@
         <img style="height: 65%" src="E:\Produktion\03_ePlayces\rooom\Dateien\Hilfe\hilfeLaptop.png" alt="" />
       </div>
     </div>
-    <div class="page page4">
+    <div class="book-page page4">
       <div class="side side0 fold">
         <p>
           <span class="wordWrapping"><strong>2. Hinweis </strong> <br />Du findest eine Notiz mit dem
@@ -497,7 +497,7 @@
           src="https://static.wixstatic.com/media/f397c8_0066bacfdb294bf78bd882ab6b289f9d~mv2.png" alt="" />
       </div>
     </div>
-    <div class="page page4">
+    <div class="book-page page4">
       <div class="side side0 fold">
         <p>
           <span class="wordWrapping"><strong>3. Hinweis </strong> <br />Wenn du Mrs. Claus eine E-Mail
@@ -535,7 +535,7 @@
         </p>
       </div>
     </div>
-    <div class="page page5">
+    <div class="book-page page5">
       <div class="side side0 last-page">
         <p>
           <span class="wordWrapping"><strong>3. Hinweis </strong> <br />Das erste Symbol steht für
@@ -606,7 +606,7 @@
     </button>
   </div>
   <script>
-    const pages = Array.from(document.querySelectorAll(".book .page"));
+    const pages = Array.from(document.querySelectorAll(".book .book-page"));
     const book = document.querySelector(".book");
     let leftStack = [];
     let rightStack = Array.from(pages).reverse(); // [p3,p2,p1,p0]
