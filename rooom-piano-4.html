@@ -338,7 +338,7 @@
         transform-style: preserve-3d;
       }
 
-      .page {
+      .book-page {
         position: absolute;
         width: 50%;
         height: 100%;
@@ -378,7 +378,7 @@ preserntaiton
         perspective: 800px;
       }
 
-      .page {
+      .book-page {
         transition: transform 1s;
         transform-origin: left center;
         background: url("https://static.wixstatic.com/media/f397c8_58a609de3e184149bb623441b70b0b84~mv2.jpg"),
@@ -401,11 +401,11 @@ preserntaiton
         box-sizing: border-box;
       }
 
-      .page:first-of-type .side0 {
+      .book-page:first-of-type .side0 {
         box-shadow: -10px 0 10px -6px rgba(0, 0, 0, 0.3);
       }
 
-      .page:last-of-type .side1 {
+      .book-page:last-of-type .side1 {
         box-shadow: 10px 0 10px -6px rgba(0, 0, 0, 0.3);
       }
 
@@ -541,27 +541,27 @@ preserntaiton
     <div id="klavier" style="text-align: center">
       <div class="noten">
         <div class="book">
-          <div class="page page0">
+          <div class="book-page page0">
             <div id="cover" class="side side0">Noten</div>
             <div id="p0s1" class="side side1"></div>
           </div>
-          <div class="page pageX">
+          <div class="book-page pageX">
             <div class="side side0"></div>
             <div class="side side1"></div>
           </div>
-          <div class="page pageX">
+          <div class="book-page pageX">
             <div class="side side0"></div>
             <div class="side side1"></div>
           </div>
-          <div class="page page1">
+          <div class="book-page page1">
             <div id="p1s0" class="side side0"></div>
             <div class="side side1"></div>
           </div>
-          <div class="page page2">
+          <div class="book-page page2">
             <div id="p2s0" class="side side0"></div>
             <div id="p2s1" class="side side1"></div>
           </div>
-          <div class="page page6">
+          <div class="book-page page6">
             <div class="side side0 last-page"></div>
             <div class="side side1"></div>
           </div>
@@ -747,7 +747,7 @@ preserntaiton
         }
       }
 
-      const pages = Array.from(document.querySelectorAll(".book .page"));
+      const pages = Array.from(document.querySelectorAll(".book .book-page"));
       const book = document.querySelector(".book");
       let leftStack = [];
       let rightStack = Array.from(pages).reverse(); // [p3,p2,p1,p0]
