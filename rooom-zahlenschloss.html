@@ -1,343 +1,365 @@
 <head>
-    <style>
-      .lock.container {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 100vw;
-        height: 100%;
-      }
-      .lock-img {
-        width: 25%;
-        height: auto;
-      }
-      .lock {
-        display: flex;
-        justify-content: center;
-        position: relative;
-        filter: drop-shadow(20px 28px 23px black);
-      }
-      .entrance {
-        display: flex;
-        justify-content: center;
-        position: relative;
-      }
-      .entrance div {
-        display: block;
-        position: absolute;
-      }
-      .lock div {
-        display: block;
-        position: absolute;
-      }
-  
-      .green {
+  <style>
+    .lock.container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 100vw;
+      height: 100%;
+    }
+
+    .lock-img {
+      width: 25%;
+      height: auto;
+    }
+
+    .lock {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      filter: drop-shadow(20px 28px 23px black);
+    }
+
+    .entrance {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .entrance div {
+      display: block;
+      position: absolute;
+    }
+
+    .lock div {
+      display: block;
+      position: absolute;
+    }
+
+    .green {
+      box-shadow: 0 0 5px 5px rgba(0, 255, 0, 0.8);
+      background-color: green;
+    }
+
+    .greenAnim {
+      -webkit-animation: blinkingGreen 0.5s 3;
+      /* Safari 4+ */
+      -moz-animation: blinkingGreen 0.5s 3;
+      /* Fx 5+ */
+      -o-animation: blinkingGreen 0.5s 3;
+      /* Opera 12+ */
+      animation: blinkingGreen 0.5s 3;
+      /* IE 10+, Fx 29+ */
+    }
+
+    .redAnim {
+      -webkit-animation: blinkingRed 0.5s 3;
+      /* Safari 4+ */
+      -moz-animation: blinkingRed 0.5s 3;
+      /* Fx 5+ */
+      -o-animation: blinkingRed 0.5s 3;
+      /* Opera 12+ */
+      animation: blinkingRed 0.5s 3;
+      /* IE 10+, Fx 29+ */
+    }
+
+    @-webkit-keyframes blinkingGreen {
+
+      0%,
+      49% {
         box-shadow: 0 0 5px 5px rgba(0, 255, 0, 0.8);
         background-color: green;
       }
-      .greenAnim {
-        -webkit-animation: blinkingGreen 0.5s 3; /* Safari 4+ */
-        -moz-animation: blinkingGreen 0.5s 3; /* Fx 5+ */
-        -o-animation: blinkingGreen 0.5s 3; /* Opera 12+ */
-        animation: blinkingGreen 0.5s 3; /* IE 10+, Fx 29+ */
+
+      50%,
+      100% {
+        box-shadow: none;
+        background-color: none;
       }
-      .redAnim {
-        -webkit-animation: blinkingRed 0.5s 3; /* Safari 4+ */
-        -moz-animation: blinkingRed 0.5s 3; /* Fx 5+ */
-        -o-animation: blinkingRed 0.5s 3; /* Opera 12+ */
-        animation: blinkingRed 0.5s 3; /* IE 10+, Fx 29+ */
+    }
+
+    @-webkit-keyframes blinkingRed {
+
+      0%,
+      49% {
+        box-shadow: 0 0 5px 5px rgba(255, 0, 0, 0.8);
+        background-color: red;
       }
-  
-      @-webkit-keyframes blinkingGreen {
-        0%,
-        49% {
-          box-shadow: 0 0 5px 5px rgba(0, 255, 0, 0.8);
-          background-color: green;
-        }
-        50%,
-        100% {
-          box-shadow: none;
-          background-color: none;
-        }
+
+      50%,
+      100% {
+        box-shadow: none;
+        background-color: none;
       }
-  
-      @-webkit-keyframes blinkingRed {
-        0%,
-        49% {
-          box-shadow: 0 0 5px 5px rgba(255, 0, 0, 0.8);
-          background-color: red;
-        }
-        50%,
-        100% {
-          box-shadow: none;
-          background-color: none;
-        }
-      }
-      .hide {
-        display: none;
-      }
-  
-      .visible {
-        background-color: blue;
-      }
-      .txt {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        top: -17px;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 100%;
-        width: 100%;
-        opacity: 0;
-        transition: 0.5s ease;
-        background-color: rgba(225, 156, 37, 0.4);
-        text-align: center;
-        color: white;
-        text-shadow: 4px 4px 16px black, 4px 4px 16px black, 4px 4px 16px black,
-          4px 4px 16px black;
-      }
-      .entrance div:hover .txt {
-        opacity: 1;
-      }
-      .entrance div:hover {
-        box-shadow: 1px 1px 25px 10px rgba(225, 156, 37, 0.4);
-      }
-      .lock div:not(#l1, #l2, #l3, #l4):hover .txt {
-        opacity: 1;
-        border-radius: 50%;
-      }
-      .lock div:not(#l1, #l2, #l3, #l4):hover {
-        box-shadow: 1px 1px 25px 10px rgba(225, 156, 37, 0.4);
-        border-radius: 50%;
-      }
-      .imageHouse {
-        height: 100vh;
-      }
-      .houseImg {
-        height: 100vh;
-      }
-      .lamps {
-        cursor: default !important;
-      }
-      .body-bg{
-        background-image: url('https://static.wixstatic.com/media/f397c8_6d014a2b8f6048448e39aebca17f07f4~mv2.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
-    </style>
-  </head>
-  <body class="body-bg">
+    }
+
+    .hide {
+      display: none !important;
+    }
+
+    .visible {
+      background-color: blue;
+    }
+
+    .txt {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -17px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: 0.5s ease;
+      background-color: rgba(225, 156, 37, 0.4);
+      text-align: center;
+      color: white;
+      text-shadow: 4px 4px 16px black, 4px 4px 16px black, 4px 4px 16px black,
+        4px 4px 16px black;
+    }
+
+    .entrance div:hover .txt {
+      opacity: 1;
+    }
+
+    .entrance div:hover {
+      box-shadow: 1px 1px 25px 10px rgba(225, 156, 37, 0.4);
+    }
+
+    .lock div:not(#l1, #l2, #l3, #l4):hover .txt {
+      opacity: 1;
+      border-radius: 50%;
+    }
+
+    .lock div:not(#l1, #l2, #l3, #l4):hover {
+      box-shadow: 1px 1px 25px 10px rgba(225, 156, 37, 0.4);
+      border-radius: 50%;
+    }
+
+    .imageHouse {
+      height: 100vh;
+    }
+
+    .houseImg {
+      height: 100vh;
+    }
+
+    .lamps {
+      cursor: default !important;
+    }
+
+    .body-bg {
+      background-image: url('https://static.wixstatic.com/media/f397c8_6d014a2b8f6048448e39aebca17f07f4~mv2.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    #viewerButtonContainer{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      background: url('https://static.wixstatic.com/media/f397c8_33400c7f8af84dc984dce2c67fc4a310~mv2.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    #viewerButtonContainer button{
+      background-color: #7e0f12;
+      border-radius: 5px;
+      color: white;
+      border: none;
+      height: 6vh;
+      margin: 25px;
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+    #viewerButtonContainer button:hover{
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="lockBodyContainer" class="body-bg">
     <div id="lock" class="lock-container">
       <div class="lock">
-        <img
-          class="lock-img"
-          src="https://mission-christmas.de/wp-content/uploads/2021/10/Secure_Lock.png"
-        />
-        <div
-          id="l1"
-          class="lamps"
-          style="
+        <img class="lock-img" src="https://mission-christmas.de/wp-content/uploads/2021/10/Secure_Lock.png" />
+        <div id="l1" class="lamps" style="
             top: 27.1%;
             left: 44.47%;
             width: 0.7%;
             height: 2%;
             cursor: pointer;
             border-radius: 50%;
-          "
-        >
+          ">
           <p class="txt"></p>
         </div>
-        <div
-          id="l2"
-          class="lamps"
-          style="
+        <div id="l2" class="lamps" style="
             top: 27.1%;
             left: 47.9%;
             width: 0.7%;
             height: 2%;
             cursor: pointer;
             border-radius: 50%;
-          "
-        >
+          ">
           <p class="txt"></p>
         </div>
-        <div
-          id="l3"
-          class="lamps"
-          style="
+        <div id="l3" class="lamps" style="
             top: 27.1%;
             left: 51.4%;
             width: 0.7%;
             height: 2%;
             cursor: pointer;
             border-radius: 50%;
-          "
-        >
+          ">
           <p class="txt"></p>
         </div>
-        <div
-          id="l4"
-          class="lamps"
-          style="
+        <div id="l4" class="lamps" style="
             top: 27.1%;
             left: 54.8%;
             width: 0.7%;
             height: 2%;
             cursor: pointer;
             border-radius: 50%;
-          "
-        >
+          ">
           <p class="txt"></p>
         </div>
-        <div
-          style="top: 34%; left: 44.2%; width: 3%; height: 6%; cursor: pointer"
-          onclick="kombi('1')"
-        >
+        <div style="top: 34%; left: 44.2%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('1')">
           <p class="txt"></p>
         </div>
-        <div
-          style="top: 34%; left: 48.7%; width: 3%; height: 6%; cursor: pointer"
-          onclick="kombi('2')"
-        >
+        <div style="top: 34%; left: 48.7%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('2')">
           <p class="txt"></p>
         </div>
-        <div
-          style="top: 34%; left: 53.05%; width: 3%; height: 6%; cursor: pointer"
-          onclick="kombi('3')"
-        >
+        <div style="top: 34%; left: 53.05%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('3')">
           <p class="txt"></p>
         </div>
-        <div
-          style="top: 45%; left: 44.2%; width: 3%; height: 6%; cursor: pointer"
-          onclick="kombi('4')"
-        >
+        <div style="top: 45%; left: 44.2%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('4')">
           <p class="txt"></p>
         </div>
-        <div
-          style="top: 45%; left: 48.7%; width: 3%; height: 6%; cursor: pointer"
-          onclick="kombi('5')"
-        >
+        <div style="top: 45%; left: 48.7%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('5')">
           <p class="txt"></p>
         </div>
-        <div
-          style="top: 45%; left: 53.05%; width: 3%; height: 6%; cursor: pointer"
-          onclick="kombi('6')"
-        >
+        <div style="top: 45%; left: 53.05%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('6')">
           <p class="txt"></p>
         </div>
-        <div
-          style="top: 56%; left: 44.2%; width: 3%; height: 6%; cursor: pointer"
-          onclick="kombi('7')"
-        >
+        <div style="top: 56%; left: 44.2%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('7')">
           <p class="txt"></p>
         </div>
-        <div
-          style="top: 56%; left: 48.7%; width: 3%; height: 6%; cursor: pointer"
-          onclick="kombi('8')"
-        >
+        <div style="top: 56%; left: 48.7%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('8')">
           <p class="txt"></p>
         </div>
-        <div
-          style="top: 56%; left: 53.05%; width: 3%; height: 6%; cursor: pointer"
-          onclick="kombi('9')"
-        >
+        <div style="top: 56%; left: 53.05%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('9')">
           <p class="txt"></p>
         </div>
-        <div
-          style="top: 67.4%; left: 48.7%; width: 3%; height: 6%; cursor: pointer"
-          onclick="kombi('0')"
-        >
+        <div style="top: 67.4%; left: 48.7%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('0')">
           <p class="txt"></p>
         </div>
-        <div
-          style="top: 67.4%; left: 44.2%; width: 3%; height: 6%; cursor: pointer"
-          onclick="reset()"
-        >
+        <div style="top: 67.4%; left: 44.2%; width: 3%; height: 6%; cursor: pointer" onclick="reset()">
           <p class="txt"></p>
         </div>
-        <div
-          style="top: 67.4%; left: 53.05%; width: 3%; height: 6%; cursor: pointer"
-          onclick="check()"
-        >
+        <div style="top: 67.4%; left: 53.05%; width: 3%; height: 6%; cursor: pointer" onclick="check()">
           <p class="txt"></p>
         </div>
       </div>
     </div>
-    <script>
-      var audiob = new Audio(
-        "https://allplayces.de/wp-content/uploads/2022/10/button.wav"
-      );
-      var audiow = new Audio(
-        "https://allplayces.de/wp-content/uploads/2022/10/wrong.wav"
-      );
-      var passwordPc = "2715";
-      var password = "4695";
-      var input = "";
-      function kombi(number) {
-        audiob.currentTime = 0;
-        document.querySelectorAll("audio").forEach((el) => el.pause());
-        audiob.play();
-        if (input.length == 4) {
-          check();
-          return;
-        }
-        if (input.length == 0) {
-          var lamps = document.getElementsByClassName("lamps");
-          for (var i = 0; i < lamps.length; i++) {
-            lamps[i].classList.remove("green");
-            lamps[i].classList.remove("redAnim");
-          }
-        }
-        if (input.length < 4) {
-          input = input + number;
-          document.getElementById("l" + input.length).classList.add("green");
-        } else {
-          reset();
-          input = input + number;
-        }
+  </div>
+  <div id="santaVideoContainer" class="hide">
+    <video id="santaVideo" style="object-fit: fill;">
+      <source src="https://video.wixstatic.com/video/f397c8_5545ecbaa2f14248bdf176f346279fba/1080p/mp4/file.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div id="viewerButtonContainer" class="hide">
+    <button onclick="outside()">Nach Draußen gehen</button>
+  </div>
+  <script>
+    var audiob = new Audio(
+      "https://allplayces.de/wp-content/uploads/2022/10/button.wav"
+    );
+    var audiow = new Audio(
+      "https://allplayces.de/wp-content/uploads/2022/10/wrong.wav"
+    );
+    var passwordPc = "2715";
+    var password = "4695";
+    var input = "";
+    function kombi(number) {
+      audiob.currentTime = 0;
+      document.querySelectorAll("audio").forEach((el) => el.pause());
+      audiob.play();
+      if (input.length == 4) {
+        check();
+        return;
       }
-      function reset() {
+      if (input.length == 0) {
         var lamps = document.getElementsByClassName("lamps");
         for (var i = 0; i < lamps.length; i++) {
-          lamps[i].classList.remove("redAnim");
           lamps[i].classList.remove("green");
+          lamps[i].classList.remove("redAnim");
+        }
+      }
+      if (input.length < 4) {
+        input = input + number;
+        document.getElementById("l" + input.length).classList.add("green");
+      } else {
+        reset();
+        input = input + number;
+      }
+    }
+    function reset() {
+      var lamps = document.getElementsByClassName("lamps");
+      for (var i = 0; i < lamps.length; i++) {
+        lamps[i].classList.remove("redAnim");
+        lamps[i].classList.remove("green");
+      }
+      input = "";
+    }
+    function check() {
+      if (input == password) {
+        var lamps = document.getElementsByClassName("lamps");
+        for (var i = 0; i < lamps.length; i++) {
+          lamps[i].classList.remove("green");
+          lamps[i].classList.add("greenAnim");
+        }
+        setTimeout(function () {
+          console.log("Geschafft");
+          document.getElementById('lockBodyContainer').classList.add('hide');
+          document.getElementById('santaVideoContainer').classList.remove('hide');
+          var vid = document.getElementById('santaVideo');
+          vid.play();
+          vid.addEventListener('ended',videoEnded,false);
+          //window.open("https://mission-christmas.de/en/00ce/5auxo5m4/");  //Weiterleitung
+
+        }, 2000);
+      } else {
+        audiow.currentTime = 0;
+        document.querySelectorAll("audio").forEach((el) => el.pause());
+        audiow.play();
+        if (input == passwordPc) {
+          console.log("pc audio");
+          // var audio = new Audio('audio_file.mp3');  //DAS IST DOCH DAS PASSWORT FÜR MEINEN PC AUDIO
+          // audio.play();
+        }
+        var lamps = document.getElementsByClassName("lamps");
+        for (var i = 0; i < lamps.length; i++) {
+          lamps[i].classList.remove("green");
+          lamps[i].classList.add("redAnim");
         }
         input = "";
       }
-      function check() {
-        if (input == password) {
-          var lamps = document.getElementsByClassName("lamps");
-          for (var i = 0; i < lamps.length; i++) {
-            lamps[i].classList.remove("green");
-            lamps[i].classList.add("greenAnim");
-          }
-          setTimeout(function () {
-            console.log("Geschafft");
-            //window.open("https://mission-christmas.de/en/00ce/5auxo5m4/");  //Weiterleitung
-          }, 2000);
-        } else {
-          audiow.currentTime = 0;
-          document.querySelectorAll("audio").forEach((el) => el.pause());
-          audiow.play();
-          if (input == passwordPc) {
-            console.log("pc audio");
-            // var audio = new Audio('audio_file.mp3');  //DAS IST DOCH DAS PASSWORT FÜR MEINEN PC AUDIO
-            // audio.play();
-          }
-          var lamps = document.getElementsByClassName("lamps");
-          for (var i = 0; i < lamps.length; i++) {
-            lamps[i].classList.remove("green");
-            lamps[i].classList.add("redAnim");
-          }
-          input = "";
-        }
-      }
-    </script>
-  </body>
+    }
+    function videoEnded(){
+      document.getElementById('santaVideoContainer').classList.add('hide');
+      document.getElementById('viewerButtonContainer').classList.remove('hide');
+    }
+    
+    function outside(){
+      window.open("https://viewer.rooom.com/space/08b3c065284869268d75cb74ce17a7");  //Weiterleitung
+    }
+  </script>
+</body>
