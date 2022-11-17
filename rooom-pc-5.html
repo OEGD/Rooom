@@ -294,7 +294,7 @@
       <p>Notiz: "Gelber Postit mit verschlüsseltem Passwort"</p>
     </div>
   </div>
-  <div id="content" class="hide">
+  <div id="LieferiniContent" class="hide">
     <div id="logIn" class="container">
       <div id="topBar">
         <img src="https://static.wixstatic.com/media/f397c8_3d1c5558769f4ad28df34c01118b3f06~mv2.png" alt="" />
@@ -365,7 +365,7 @@
   }
   function openPC() {
     document.getElementById("logIn").classList.add("hide");
-    document.getElementById("content").classList.remove("hide");
+    document.getElementById("LieferiniContent").classList.remove("hide");
   }
   function wrong() {
     document.getElementById("signIn").classList.remove("hide");
@@ -506,7 +506,7 @@
       var message;
       if (percentage === 1) {
         message = "Fantastisch!";
-        document.getElementById("content").classList.add("hide");
+        document.getElementById("LieferiniContent").classList.add("hide");
         document.getElementById("img").classList.remove("hide");
       } else if (percentage >= 0.75) {
         message = "Hei, das war ja schon ganz gut.";

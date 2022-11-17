@@ -9,12 +9,13 @@
       padding: 20px;
       border: 1px solid #888;
       width: 100vw;
-      height: 100%;
+      height: 100vh;
     }
 
     .lock-img {
       width: 25%;
       height: auto;
+      min-width: 280px;
     }
 
     .lock {
@@ -133,12 +134,12 @@
       box-shadow: 1px 1px 25px 10px rgba(225, 156, 37, 0.4);
     }
 
-    .lock div:not(#l1, #l2, #l3, #l4):hover .txt {
+    .lock-sammlung div:not(#l1, #l2, #l3, #l4):hover .txt {
       opacity: 1;
       border-radius: 50%;
     }
 
-    .lock div:not(#l1, #l2, #l3, #l4):hover {
+    .lock-sammlung div:not(#l1, #l2, #l3, #l4):hover {
       box-shadow: 1px 1px 25px 10px rgba(225, 156, 37, 0.4);
       border-radius: 50%;
     }
@@ -156,21 +157,26 @@
     }
 
     .body-bg {
+      width: 100vw;
+      height: 100vh;
       background-image: url('https://static.wixstatic.com/media/f397c8_6d014a2b8f6048448e39aebca17f07f4~mv2.png');
       background-size: cover;
       background-repeat: no-repeat;
     }
-    #viewerButtonContainer{
+
+    #viewerButtonContainer {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
+      min-height: 80vh;
       width: 100%;
       background: url('https://static.wixstatic.com/media/f397c8_33400c7f8af84dc984dce2c67fc4a310~mv2.jpg');
       background-size: cover;
       background-repeat: no-repeat;
     }
-    #viewerButtonContainer button{
+
+    #viewerButtonContainer button {
       background-color: #7e0f12;
       border-radius: 5px;
       color: white;
@@ -180,8 +186,15 @@
       padding-left: 25px;
       padding-right: 25px;
     }
-    #viewerButtonContainer button:hover{
+
+    #viewerButtonContainer button:hover {
       cursor: pointer;
+    }
+
+    .lock-sammlung {
+      width: 25%;
+      min-width: 280px;
+      height: 100%;
     }
   </style>
 </head>
@@ -191,88 +204,91 @@
     <div id="lock" class="lock-container">
       <div class="lock">
         <img class="lock-img" src="https://mission-christmas.de/wp-content/uploads/2021/10/Secure_Lock.png" />
-        <div id="l1" class="lamps" style="
+        <div class="lock-Sammlung">
+          <div id="l1" class="lamps" style="
             top: 27.1%;
-            left: 44.47%;
-            width: 0.7%;
+            left: 28%;
+            width: 2.7%;
             height: 2%;
             cursor: pointer;
             border-radius: 50%;
           ">
-          <p class="txt"></p>
-        </div>
-        <div id="l2" class="lamps" style="
+            <p class="txt"></p>
+          </div>
+          <div id="l2" class="lamps" style="
             top: 27.1%;
-            left: 47.9%;
-            width: 0.7%;
+            left: 41.9%;
+            width: 2.7%;
             height: 2%;
             cursor: pointer;
             border-radius: 50%;
           ">
-          <p class="txt"></p>
-        </div>
-        <div id="l3" class="lamps" style="
+            <p class="txt"></p>
+          </div>
+          <div id="l3" class="lamps" style="
             top: 27.1%;
-            left: 51.4%;
-            width: 0.7%;
+            left: 55.5%;
+            width: 2.7%;
             height: 2%;
             cursor: pointer;
             border-radius: 50%;
           ">
-          <p class="txt"></p>
-        </div>
-        <div id="l4" class="lamps" style="
+            <p class="txt"></p>
+          </div>
+          <div id="l4" class="lamps" style="
             top: 27.1%;
-            left: 54.8%;
-            width: 0.7%;
+            left: 69.5%;
+            width: 2.7%;
             height: 2%;
             cursor: pointer;
             border-radius: 50%;
           ">
-          <p class="txt"></p>
-        </div>
-        <div style="top: 34%; left: 44.2%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('1')">
-          <p class="txt"></p>
-        </div>
-        <div style="top: 34%; left: 48.7%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('2')">
-          <p class="txt"></p>
-        </div>
-        <div style="top: 34%; left: 53.05%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('3')">
-          <p class="txt"></p>
-        </div>
-        <div style="top: 45%; left: 44.2%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('4')">
-          <p class="txt"></p>
-        </div>
-        <div style="top: 45%; left: 48.7%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('5')">
-          <p class="txt"></p>
-        </div>
-        <div style="top: 45%; left: 53.05%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('6')">
-          <p class="txt"></p>
-        </div>
-        <div style="top: 56%; left: 44.2%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('7')">
-          <p class="txt"></p>
-        </div>
-        <div style="top: 56%; left: 48.7%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('8')">
-          <p class="txt"></p>
-        </div>
-        <div style="top: 56%; left: 53.05%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('9')">
-          <p class="txt"></p>
-        </div>
-        <div style="top: 67.4%; left: 48.7%; width: 3%; height: 6%; cursor: pointer" onclick="kombi('0')">
-          <p class="txt"></p>
-        </div>
-        <div style="top: 67.4%; left: 44.2%; width: 3%; height: 6%; cursor: pointer" onclick="reset()">
-          <p class="txt"></p>
-        </div>
-        <div style="top: 67.4%; left: 53.05%; width: 3%; height: 6%; cursor: pointer" onclick="check()">
-          <p class="txt"></p>
+            <p class="txt"></p>
+          </div>
+          <div style="top: 34%; left: 30.2%; width: 8%; height: 6%; cursor: pointer" onclick="kombi('1')">
+            <p class="txt"></p>
+          </div>
+          <div style="top: 34%; left: 48.7%; width: 8%; height: 6%; cursor: pointer" onclick="kombi('2')">
+            <p class="txt"></p>
+          </div>
+          <div style="top: 34%; left: 66%; width: 8%; height: 6%; cursor: pointer" onclick="kombi('3')">
+            <p class="txt"></p>
+          </div>
+          <div style="top: 45%; left: 30.2%; width: 8%; height: 6%; cursor: pointer" onclick="kombi('4')">
+            <p class="txt"></p>
+          </div>
+          <div style="top: 45%; left: 48.7%; width: 8%; height: 6%; cursor: pointer" onclick="kombi('5')">
+            <p class="txt"></p>
+          </div>
+          <div style="top: 45%; left: 66%; width: 8%; height: 6%; cursor: pointer" onclick="kombi('6')">
+            <p class="txt"></p>
+          </div>
+          <div style="top: 56%; left: 30.2%; width: 8%; height: 6%; cursor: pointer" onclick="kombi('7')">
+            <p class="txt"></p>
+          </div>
+          <div style="top: 56%; left: 48.7%; width: 8%; height: 6%; cursor: pointer" onclick="kombi('8')">
+            <p class="txt"></p>
+          </div>
+          <div style="top: 56%; left: 66%; width: 8%; height: 6%; cursor: pointer" onclick="kombi('9')">
+            <p class="txt"></p>
+          </div>
+          <div style="top: 67.4%; left: 48.7%; width: 8%; height: 6%; cursor: pointer" onclick="kombi('0')">
+            <p class="txt"></p>
+          </div>
+          <div style="top: 67.4%; left: 30.2%; width: 8%; height: 6%; cursor: pointer" onclick="reset()">
+            <p class="txt"></p>
+          </div>
+          <div style="top: 67.4%; left: 66%; width: 8%; height: 6%; cursor: pointer" onclick="check()">
+            <p class="txt"></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div id="santaVideoContainer" class="hide">
     <video id="santaVideo" style="object-fit: fill;">
-      <source src="https://video.wixstatic.com/video/f397c8_5545ecbaa2f14248bdf176f346279fba/1080p/mp4/file.mp4" type="video/mp4">
+      <source src="https://video.wixstatic.com/video/f397c8_5545ecbaa2f14248bdf176f346279fba/1080p/mp4/file.mp4"
+        type="video/mp4">
     </video>
   </div>
   <div id="viewerButtonContainer" class="hide">
@@ -332,7 +348,7 @@
           document.getElementById('santaVideoContainer').classList.remove('hide');
           var vid = document.getElementById('santaVideo');
           vid.play();
-          vid.addEventListener('ended',videoEnded,false);
+          vid.addEventListener('ended', videoEnded, false);
           //window.open("https://mission-christmas.de/en/00ce/5auxo5m4/");  //Weiterleitung
 
         }, 2000);
@@ -353,12 +369,12 @@
         input = "";
       }
     }
-    function videoEnded(){
+    function videoEnded() {
       document.getElementById('santaVideoContainer').classList.add('hide');
       document.getElementById('viewerButtonContainer').classList.remove('hide');
     }
-    
-    function outside(){
+
+    function outside() {
       window.open("https://viewer.rooom.com/space/08b3c065284869268d75cb74ce17a7");  //Weiterleitung
     }
   </script>

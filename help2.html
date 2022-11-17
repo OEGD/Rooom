@@ -18,6 +18,9 @@
     .book {
       position: relative;
       transform-style: preserve-3d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .book-page {
@@ -26,6 +29,7 @@
       height: 100%;
       top: 0;
       left: 50%;
+      width: 40vw;
       transform-style: preserve-3d;
     }
 
@@ -62,7 +66,7 @@
 
     .book {
       width: 90vw;
-      height: 64vh;
+      height: 80vh;
       perspective: 800px;
       z-index: 2;
     }
@@ -114,7 +118,7 @@
         background: -webkit-linear-gradient(45deg, #7e0f12 0%, #88292c 100%);
         background: linear-gradient(45deg, #7e0f12 0%, #88292c 100%); */
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7e0f12', endColorstr='#88292c', GradientType=1);
-      height: 66vh;
+      height: 82vh;
     }
 
     .back-cover:before {
@@ -181,7 +185,7 @@
       border-top: 10px solid #7e0f12;
       border-bottom: 10px solid #7e0f12;
       border-left: 10px solid #7e0f12;
-      height: 66vh;
+      height: 82vh;
     }
 
     #p1s0 {
@@ -204,7 +208,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 66vh;
+      height: 82vh;
       color: #bc6d4c;
       font-family: 'NSimSun';
       box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2),
@@ -244,7 +248,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       margin: 2vw;
+      width: 10vw;
     }
 
     .bookmark-btn {
@@ -268,11 +274,11 @@
     .page0 {
       margin: auto;
       bottom: 2vh;
-      width: 46vw;
+      width: 41vw;
     }
 
     .last-page {
-      height: 66vh;
+      height: 82vh;
       border-top: 10px solid #7e0f12;
       border-bottom: 10px solid #7e0f12;
       border-right: 10px solid #7e0f12;
@@ -281,7 +287,7 @@
     .page5 {
       bottom: 2vh;
       margin: auto;
-      width: 46vw;
+      width: 41vw;
     }
 
     .fold:before {
@@ -304,306 +310,331 @@
       border-width: 0 50px 50px 0;
       border-color: #eee #f9faff;
     }
+
+    #helpContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media only screen and (max-width: 1200px) {
+      #helpContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .bookmarks {
+        flex-direction: row;
+      }
+
+    }
   </style>
 </head>
 
 <body>
-  <div class="book">
-    <div class="book-page page0">
-      <div id="cover" class="side side0">
-        Metaverse<br />
-        Escape Rooom<br />
-        Hilfesystem
-        <br />
-        <br />
-        ACHTUNG<br />
-        Öffne dieses Buch nur, wenn du Hilfe beim Lösen der Rätsel benötigtst
+  <div id="helpContainer">
+    <div class="book">
+      <div class="book-page page0">
+        <div id="cover" class="side side0">
+          Metaverse<br />
+          Escape Rooom<br />
+          Hilfesystem
+          <br />
+          <br />
+          ACHTUNG<br />
+          Öffne dieses Buch nur, wenn du Hilfe beim Lösen der Rätsel benötigtst
+        </div>
+        <div id="p0s1" class="side side1"></div>
       </div>
-      <div id="p0s1" class="side side1"></div>
+      <div class="book-page page1">
+        <div id="p1s0" class="side side0 page-content fold">
+          <p>
+            <span class="wordHeading"><strong>Vorwort </strong></span>
+          </p>
+          <p>
+            <span class="wordWrapping">Um den Metaverse Escape Rooom zu l&ouml;sen und dadurch
+              Weihnachten zu retten, hat dich Santa Claus um die
+              Unterst&uuml;tzung bei 4 Aufgaben gebeten. Erst nach Absolvierung
+              all dieser Tasks l&auml;sst sich die verschlossene T&uuml;r
+              &ouml;ffnen - das f&uuml;nfte und finale R&auml;tsel. Auf den
+              folgenden Doppelseitenseiten findtest du jeweils 3 Hinweise zu den
+              jeweiligen R&auml;tseln / Aufgaben. Der erste Hinweis ist noch
+              sehr allgemein gehalten, der letzte verr&auml;t dir die
+              L&ouml;sung.
+            </span>
+          </p>
+          <p>&nbsp;</p>
+          <p><span class="wordWrapping">&Uuml;bersicht:</span></p>
+          <p>
+            <span class="wordWrapping">Santas 1. Aufgabe - das Weihnachtslied - Seite 1
+            </span>
+          </p>
+          <p>
+            <span class="wordWrapping">Santas 2. Aufgabe - die Geschenke - Seite 3</span>
+          </p>
+          <p>
+            <span class="wordWrapping">Santas 3. Aufgabe - die Essens-Bestellung - Seite 5
+            </span>
+          </p>
+          <p>
+            <span class="wordWrapping">Santas 4. Aufgabe - Mrs. Claus - Seite 7 Das letzte R&auml;tsel -
+              die verschlossene T&uuml;r - Seite 9</span>
+          </p>
+        </div>
+        <div class="side side1">
+          <p>
+            <span class="wordHeading"><strong>Santas 1. Aufgabe <br />
+                das Weihnachtslied
+              </strong></span>
+          </p>
+          <p>
+            <span class="wordWrapping"><strong>1. Hinweis </strong> <br />Du musst auf dem Piano ein
+              Weihnachtslied spielen. Doch wie? Eine verbrannte Notiz gibt dir
+              Auskunft.
+            </span>
+          </p>
+          <p>
+            <span class="wordWrapping"><strong>2. Hinweis </strong> <br />Im Kamin findest du eine
+              verbrannte Notiz. Setzt du diese zusammen findest du heraus, dass
+              lediglich jede zweite Note gespielt werden muss.
+            </span>
+          </p>
+          <img style="height: 35%"
+            src="https://static.wixstatic.com/media/f397c8_3ec7c599f2184ef4ba9b4b8c38f2626d~mv2.png" alt="" />
+        </div>
+        <!--Rätsel 1 Seite 1-->
+      </div>
+      <div class="book-page page2">
+        <div id="p2s0" class="side side0 fold">
+          <p>
+            <span class="wordWrapping"><strong>3. Hinweis </strong> <br />Auf dem Piano muss Jingle
+              Bells gespielt werden. Wie du herausgefunden hast, jedoch nur jede
+              zweite Note: <br /><br />
+              Die richtige Reihenfolge lautet also:<br />
+              A F C C G D<br /><br />
+              Nach erfolgreichem Spielen erhältst du eine Zahl für die finale
+              Tür:<br />
+              Diese lautet VIER.
+            </span>
+          </p>
+          <img style="width: 100%"
+            src="https://static.wixstatic.com/media/f397c8_a8cd334816d84268885b3671e8037710~mv2.jpg" alt="" />
+        </div>
+        <!--Rätsel 1 Seite 2-->
+        <div id="p2s1" class="side side1">
+          <p>
+            <span class="wordHeading"><strong>Santas 2. Aufgabe <br />
+                die Geschenke
+              </strong></span>
+          </p>
+          <p>
+            <span class="wordWrapping"><strong>1. Hinweis </strong> <br />Auf dem Fließband findest du
+              Geschenke mit farbigen Schleifen. Hast du diese in der richtigen
+              Reihenfolge ausgepackt?
+            </span>
+          </p>
+          <p>
+            <span class="wordWrapping"><strong>2. Hinweis </strong> <br />In den Geschenken findest du
+              heraus, für wen diese sind. Kombiniere die Reihenfolge – wie die
+              farbigen Geschenke geöffnet werden müssen, kannst du der Tafel
+              oberhalb des Fließbandes entnehmen - und die Buchstaben innerhalb
+              der Geschenke. Was verraten dir diese?
+            </span>
+          </p>
+          <img style="width: 100%"
+            src="https://static.wixstatic.com/media/f397c8_7db0e20c86ca4f7f93cf31e743ab9331~mv2.jpg" alt="" />
+        </div>
+      </div>
+      <div class="book-page page3">
+        <div class="side side0 fold">
+          <p>
+            <span class="wordWrapping"><strong>3. Hinweis </strong> <br />In den Geschenken findest du
+              heraus, für wen diese sind. Packst du diese in richtiger
+              Reihenfolge aus (diese lässt sich der Tafel oberhalb des
+              Fließbandes entnehmen) erhältst du folgende Informationen:
+              <br /><br />
+              für S.<br />
+              für E.<br />
+              für C.<br />
+              für H.<br />
+              für S.<br /><br />
+              Die Buchstaben sind wichtig. Sie verraten dir eine Zahl für die
+              finale Tür: Diese lautet SECHS.
+            </span>
+          </p>
+        </div>
+        <!--Rätsel 2 -->
+        <div class="side side1">
+          <p>
+            <span class="wordHeading"><strong>Santas 3. Aufgabe <br />
+                die Geschenke
+              </strong></span>
+          </p>
+          <p>
+            <span class="wordWrapping"><strong>1. Hinweis </strong> <br />Um das Essen zu bestellen
+              musst du dich in den Laptop einloggen. Hierzu benötigst du ein
+              Passwort, welches man auf einer Notiz findet. Was bestellt werden
+              soll verrät dir ein Weihnachts-Menü.
+            </span>
+          </p>
+          <img style="width: 100%;"
+            src="https://static.wixstatic.com/media/f397c8_9280d8fea83b493fbe0b6b4d92d23139~mv2.png" alt="" />
+        </div>
+      </div>
+      <div class="book-page page4">
+        <div class="side side0 fold">
+          <p>
+            <span class="wordWrapping"><strong>2. Hinweis </strong> <br />Du findest eine Notiz mit dem
+              Laptop Passwort. Teil die die vier Formen gedanklich je mit einem
+              Strich in der Mitte. So erhältst du das Passwort für den Laptop.
+              Dieses lautet: 2715
+            </span>
+          </p>
+          <p>
+            <span class="wordWrapping"><strong>3. Hinweis </strong> <br />Nachdem du dich mit dem
+              Passwort 2715 in den Laptop eingeloggt hast, musst du das Essen
+              bestellen. Wie du dem Weihnachts-Menü entnehmen kannst, soll
+              folgendes gegessen werden: Schmackhaftes Kürbissüppchen;
+              Entenbraten mit Rotkohl und Klößen; Bratapfel. Wähl diese Gerichte
+              aus den neun Bildern aus. Sobald du die Bestellung abgesendet
+              hast, erhältst du eine Zahl für die finale Tür: Diese lautet NEUN.
+            </span>
+          </p>
+          <img style="height: 35%"
+            src="https://static.wixstatic.com/media/f397c8_3ec7c599f2184ef4ba9b4b8c38f2626d~mv2.png" alt="" />
+        </div>
+        <!--Rätsel 3 -->
+        <div class="side side1">
+          <p>
+            <span class="wordHeading"><strong>Santas 4. Aufgabe <br />
+                die Geschenke
+              </strong></span>
+          </p>
+          <p>
+            <span class="wordWrapping"><strong>1. Hinweis </strong> <br />Hast du bereits die
+              Visitenkarte von Mrs. Claus gefunden?
+            </span>
+          </p>
+          <p>
+            <span class="wordWrapping"><strong>2. Hinweis </strong> <br />Hast du bereits Mrs. Claus
+              kontaktiert? Sie freut sich wahnsinnig über Post und ist unter
+              mrs.claus@eplayces.- de zu erreichen.
+            </span>
+          </p>
+          <img style="height: 35%"
+            src="https://static.wixstatic.com/media/f397c8_0066bacfdb294bf78bd882ab6b289f9d~mv2.png" alt="" />
+        </div>
+      </div>
+      <div class="book-page page4">
+        <div class="side side0 fold">
+          <p>
+            <span class="wordWrapping"><strong>3. Hinweis </strong> <br />Wenn du Mrs. Claus eine E-Mail
+              schreibst erhältst du folgende Antwort:<br /><br />
+              Hallo!<br />
+              Schön, dass du dich meldest!<br />
+              Die letzte Zahl des Zahlenschlosses ist eine FÜNF!<br /><br />
+              LG<br />
+              Mrs. Claus
+            </span>
+          </p>
+        </div>
+        <!--Rätsel 3 -->
+        <div class="side side1">
+          <p>
+            <span class="wordHeading"><strong>Santas 5. Aufgabe <br />
+                die Geschenke
+              </strong></span>
+          </p>
+          <p>
+            <span class="wordWrapping"><strong>1. Hinweis </strong> <br />Um den Code für dieses
+              Zahlenschloss zu ermitteln, musst du alle vier vorherigen Aufgaben
+              erledigt haben. Die richtige Reihenfolge verraten dir die Symbole
+              auf der Tür.
+            </span>
+          </p>
+          <img style="height: 35%"
+            src="https://static.wixstatic.com/media/f397c8_4ccacbf79aba456aa32b637b46015b0b~mv2.png" alt="" />
+          <p>
+            <span class="wordWrapping"><strong>2. Hinweis </strong> <br />Die Symbole geben an in
+              welcher Reihenfolge die ermittelten Zahlen eingegeben werden
+              müssen. Jedes Symbol steht hierbei für eine von Santas Aufgaben.
+              Auch die Objekte im Raum sind mit diesen Symbolen gekennzeichnet.
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="book-page page5">
+        <div class="side side0 last-page">
+          <p>
+            <span class="wordWrapping"><strong>3. Hinweis </strong> <br />Das erste Symbol steht für
+              Santas 1. Aufgabe - das Weihnachtslied Das zweite Symbol für
+              Santas 2. Aufgabe - die Geschenke Das dritte Symbol steht Santas
+              3. Aufgabe - die Essens-Bestellungund das vierte für Santas 4.
+              Aufgabe - Mrs. Claus Der richtige Code lautet somit: <br /><br />
+              VIER – SECHS – NEUN - FÜNF
+            </span>
+          </p>
+          <img style="height: 35%"
+            src="https://static.wixstatic.com/media/f397c8_f4d75106fb5046ac9cac6067efba5e18~mv2.png" alt="" />
+        </div>
+        <!--Rätsel 4 -->
+        <div class="side side1 back-cover"></div>
+      </div>
     </div>
-    <div class="book-page page1">
-      <div id="p1s0" class="side side0 page-content fold">
-        <p>
-          <span class="wordHeading"><strong>Vorwort </strong></span>
-        </p>
-        <p>
-          <span class="wordWrapping">Um den Metaverse Escape Rooom zu l&ouml;sen und dadurch
-            Weihnachten zu retten, hat dich Santa Claus um die
-            Unterst&uuml;tzung bei 4 Aufgaben gebeten. Erst nach Absolvierung
-            all dieser Tasks l&auml;sst sich die verschlossene T&uuml;r
-            &ouml;ffnen - das f&uuml;nfte und finale R&auml;tsel. Auf den
-            folgenden Doppelseitenseiten findtest du jeweils 3 Hinweise zu den
-            jeweiligen R&auml;tseln / Aufgaben. Der erste Hinweis ist noch
-            sehr allgemein gehalten, der letzte verr&auml;t dir die
-            L&ouml;sung.
-          </span>
-        </p>
-        <p>&nbsp;</p>
-        <p><span class="wordWrapping">&Uuml;bersicht:</span></p>
-        <p>
-          <span class="wordWrapping">Santas 1. Aufgabe - das Weihnachtslied - Seite 1
-          </span>
-        </p>
-        <p>
-          <span class="wordWrapping">Santas 2. Aufgabe - die Geschenke - Seite 3</span>
-        </p>
-        <p>
-          <span class="wordWrapping">Santas 3. Aufgabe - die Essens-Bestellung - Seite 5
-          </span>
-        </p>
-        <p>
-          <span class="wordWrapping">Santas 4. Aufgabe - Mrs. Claus - Seite 7 Das letzte R&auml;tsel -
-            die verschlossene T&uuml;r - Seite 9</span>
-        </p>
-      </div>
-      <div class="side side1">
-        <p>
-          <span class="wordHeading"><strong>Santas 1. Aufgabe <br />
-              das Weihnachtslied
-            </strong></span>
-        </p>
-        <p>
-          <span class="wordWrapping"><strong>1. Hinweis </strong> <br />Du musst auf dem Piano ein
-            Weihnachtslied spielen. Doch wie? Eine verbrannte Notiz gibt dir
-            Auskunft.
-          </span>
-        </p>
-        <p>
-          <span class="wordWrapping"><strong>2. Hinweis </strong> <br />Im Kamin findest du eine
-            verbrannte Notiz. Setzt du diese zusammen findest du heraus, dass
-            lediglich jede zweite Note gespielt werden muss.
-          </span>
-        </p>
-        <img style="height: 35%" src="https://static.wixstatic.com/media/f397c8_3ec7c599f2184ef4ba9b4b8c38f2626d~mv2.png" alt="" />
-      </div>
-      <!--Rätsel 1 Seite 1-->
+    <div class="bookmarks">
+      <button id="sol1" class="bookmark-btn" onclick="bookmark(this.id)">
+        <div class="icon">
+          <svg viewBox="0 0 36 36">
+            <path class="filled" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
+            <path class="default" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
+            <path class="corner" d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z" />
+          </svg>
+        </div>
+        Rätsel 1
+      </button>
+      <button id="sol2" class="bookmark-btn" onclick="bookmark(this.id)">
+        <div class="icon">
+          <svg viewBox="0 0 36 36">
+            <path class="filled" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
+            <path class="default" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
+            <path class="corner" d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z" />
+          </svg>
+        </div>
+        Rätsel 2
+      </button>
+      <button id="sol3" class="bookmark-btn" onclick="bookmark(this.id)">
+        <div class="icon">
+          <svg viewBox="0 0 36 36">
+            <path class="filled" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
+            <path class="default" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
+            <path class="corner" d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z" />
+          </svg>
+        </div>
+        Rätsel 3
+      </button>
+      <button id="sol4" class="bookmark-btn" onclick="bookmark(this.id)">
+        <div class="icon">
+          <svg viewBox="0 0 36 36">
+            <path class="filled" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
+            <path class="default" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
+            <path class="corner" d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z" />
+          </svg>
+        </div>
+        Rätsel 4
+      </button>
+      <button id="sol5" class="bookmark-btn" onclick="bookmark(this.id)">
+        <div class="icon">
+          <svg viewBox="0 0 36 36">
+            <path class="filled" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
+            <path class="default" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
+            <path class="corner" d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z" />
+          </svg>
+        </div>
+        Rätsel 5
+      </button>
     </div>
-    <div class="book-page page2">
-      <div id="p2s0" class="side side0 fold">
-        <p>
-          <span class="wordWrapping"><strong>3. Hinweis </strong> <br />Auf dem Piano muss Jingle
-            Bells gespielt werden. Wie du herausgefunden hast, jedoch nur jede
-            zweite Note: <br /><br />
-            Die richtige Reihenfolge lautet also:<br />
-            A F C C G D<br /><br />
-            Nach erfolgreichem Spielen erhältst du eine Zahl für die finale
-            Tür:<br />
-            Diese lautet VIER.
-          </span>
-        </p>
-        <img style="height: 35%"
-          src="https://static.wixstatic.com/media/f397c8_a8cd334816d84268885b3671e8037710~mv2.jpg" alt="" />
-      </div>
-      <!--Rätsel 1 Seite 2-->
-      <div id="p2s1" class="side side1">
-        <p>
-          <span class="wordHeading"><strong>Santas 2. Aufgabe <br />
-              die Geschenke
-            </strong></span>
-        </p>
-        <p>
-          <span class="wordWrapping"><strong>1. Hinweis </strong> <br />Auf dem Fließband findest du
-            Geschenke mit farbigen Schleifen. Hast du diese in der richtigen
-            Reihenfolge ausgepackt?
-          </span>
-        </p>
-        <p>
-          <span class="wordWrapping"><strong>2. Hinweis </strong> <br />In den Geschenken findest du
-            heraus, für wen diese sind. Kombiniere die Reihenfolge – wie die
-            farbigen Geschenke geöffnet werden müssen, kannst du der Tafel
-            oberhalb des Fließbandes entnehmen - und die Buchstaben innerhalb
-            der Geschenke. Was verraten dir diese?
-          </span>
-        </p>
-        <img style="height: 35%"
-          src="https://static.wixstatic.com/media/f397c8_7db0e20c86ca4f7f93cf31e743ab9331~mv2.jpg" alt="" />
-      </div>
-    </div>
-    <div class="book-page page3">
-      <div class="side side0 fold">
-        <p>
-          <span class="wordWrapping"><strong>3. Hinweis </strong> <br />In den Geschenken findest du
-            heraus, für wen diese sind. Packst du diese in richtiger
-            Reihenfolge aus (diese lässt sich der Tafel oberhalb des
-            Fließbandes entnehmen) erhältst du folgende Informationen:
-            <br /><br />
-            für S.<br />
-            für E.<br />
-            für C.<br />
-            für H.<br />
-            für S.<br /><br />
-            Die Buchstaben sind wichtig. Sie verraten dir eine Zahl für die
-            finale Tür: Diese lautet SECHS.
-          </span>
-        </p>
-      </div>
-      <!--Rätsel 2 -->
-      <div class="side side1">
-        <p>
-          <span class="wordHeading"><strong>Santas 3. Aufgabe <br />
-              die Geschenke
-            </strong></span>
-        </p>
-        <p>
-          <span class="wordWrapping"><strong>1. Hinweis </strong> <br />Um das Essen zu bestellen
-            musst du dich in den Laptop einloggen. Hierzu benötigst du ein
-            Passwort, welches man auf einer Notiz findet. Was bestellt werden
-            soll verrät dir ein Weihnachts-Menü.
-          </span>
-        </p>
-        <img style="width: 100%;" src="https://static.wixstatic.com/media/f397c8_9280d8fea83b493fbe0b6b4d92d23139~mv2.png" alt="" />
-      </div>
-    </div>
-    <div class="book-page page4">
-      <div class="side side0 fold">
-        <p>
-          <span class="wordWrapping"><strong>2. Hinweis </strong> <br />Du findest eine Notiz mit dem
-            Laptop Passwort. Teil die die vier Formen gedanklich je mit einem
-            Strich in der Mitte. So erhältst du das Passwort für den Laptop.
-            Dieses lautet: 2715
-          </span>
-        </p>
-        <p>
-          <span class="wordWrapping"><strong>3. Hinweis </strong> <br />Nachdem du dich mit dem
-            Passwort 2715 in den Laptop eingeloggt hast, musst du das Essen
-            bestellen. Wie du dem Weihnachts-Menü entnehmen kannst, soll
-            folgendes gegessen werden: Schmackhaftes Kürbissüppchen;
-            Entenbraten mit Rotkohl und Klößen; Bratapfel. Wähl diese Gerichte
-            aus den neun Bildern aus. Sobald du die Bestellung abgesendet
-            hast, erhältst du eine Zahl für die finale Tür: Diese lautet NEUN.
-          </span>
-        </p>
-        <img style="height: 35%" src="https://static.wixstatic.com/media/f397c8_3ec7c599f2184ef4ba9b4b8c38f2626d~mv2.png" alt="" />
-      </div>
-      <!--Rätsel 3 -->
-      <div class="side side1">
-        <p>
-          <span class="wordHeading"><strong>Santas 4. Aufgabe <br />
-              die Geschenke
-            </strong></span>
-        </p>
-        <p>
-          <span class="wordWrapping"><strong>1. Hinweis </strong> <br />Hast du bereits die
-            Visitenkarte von Mrs. Claus gefunden?
-          </span>
-        </p>
-        <p>
-          <span class="wordWrapping"><strong>2. Hinweis </strong> <br />Hast du bereits Mrs. Claus
-            kontaktiert? Sie freut sich wahnsinnig über Post und ist unter
-            mrs.claus@eplayces.- de zu erreichen.
-          </span>
-        </p>
-        <img style="height: 35%"
-          src="https://static.wixstatic.com/media/f397c8_0066bacfdb294bf78bd882ab6b289f9d~mv2.png" alt="" />
-      </div>
-    </div>
-    <div class="book-page page4">
-      <div class="side side0 fold">
-        <p>
-          <span class="wordWrapping"><strong>3. Hinweis </strong> <br />Wenn du Mrs. Claus eine E-Mail
-            schreibst erhältst du folgende Antwort:<br /><br />
-            Hallo!<br />
-            Schön, dass du dich meldest!<br />
-            Die letzte Zahl des Zahlenschlosses ist eine FÜNF!<br /><br />
-            LG<br />
-            Mrs. Claus
-          </span>
-        </p>
-      </div>
-      <!--Rätsel 3 -->
-      <div class="side side1">
-        <p>
-          <span class="wordHeading"><strong>Santas 5. Aufgabe <br />
-              die Geschenke
-            </strong></span>
-        </p>
-        <p>
-          <span class="wordWrapping"><strong>1. Hinweis </strong> <br />Um den Code für dieses
-            Zahlenschloss zu ermitteln, musst du alle vier vorherigen Aufgaben
-            erledigt haben. Die richtige Reihenfolge verraten dir die Symbole
-            auf der Tür.
-          </span>
-        </p>
-        <img style="height: 35%"
-          src="https://static.wixstatic.com/media/f397c8_4ccacbf79aba456aa32b637b46015b0b~mv2.png" alt="" />
-        <p>
-          <span class="wordWrapping"><strong>2. Hinweis </strong> <br />Die Symbole geben an in
-            welcher Reihenfolge die ermittelten Zahlen eingegeben werden
-            müssen. Jedes Symbol steht hierbei für eine von Santas Aufgaben.
-            Auch die Objekte im Raum sind mit diesen Symbolen gekennzeichnet.
-          </span>
-        </p>
-      </div>
-    </div>
-    <div class="book-page page5">
-      <div class="side side0 last-page">
-        <p>
-          <span class="wordWrapping"><strong>3. Hinweis </strong> <br />Das erste Symbol steht für
-            Santas 1. Aufgabe - das Weihnachtslied Das zweite Symbol für
-            Santas 2. Aufgabe - die Geschenke Das dritte Symbol steht Santas
-            3. Aufgabe - die Essens-Bestellungund das vierte für Santas 4.
-            Aufgabe - Mrs. Claus Der richtige Code lautet somit: <br /><br />
-            VIER – SECHS – NEUN - FÜNF
-          </span>
-        </p>
-        <img style="height: 35%"
-          src="https://static.wixstatic.com/media/f397c8_f4d75106fb5046ac9cac6067efba5e18~mv2.png" alt="" />
-      </div>
-      <!--Rätsel 4 -->
-      <div class="side side1 back-cover"></div>
-    </div>
-  </div>
-  <div class="bookmarks">
-    <button id="sol1" class="bookmark-btn" onclick="bookmark(this.id)">
-      <div class="icon">
-        <svg viewBox="0 0 36 36">
-          <path class="filled" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
-          <path class="default" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
-          <path class="corner" d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z" />
-        </svg>
-      </div>
-      Rätsel 1
-    </button>
-    <button id="sol2" class="bookmark-btn" onclick="bookmark(this.id)">
-      <div class="icon">
-        <svg viewBox="0 0 36 36">
-          <path class="filled" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
-          <path class="default" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
-          <path class="corner" d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z" />
-        </svg>
-      </div>
-      Rätsel 2
-    </button>
-    <button id="sol3" class="bookmark-btn" onclick="bookmark(this.id)">
-      <div class="icon">
-        <svg viewBox="0 0 36 36">
-          <path class="filled" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
-          <path class="default" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
-          <path class="corner" d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z" />
-        </svg>
-      </div>
-      Rätsel 3
-    </button>
-    <button id="sol4" class="bookmark-btn" onclick="bookmark(this.id)">
-      <div class="icon">
-        <svg viewBox="0 0 36 36">
-          <path class="filled" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
-          <path class="default" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
-          <path class="corner" d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z" />
-        </svg>
-      </div>
-      Rätsel 4
-    </button>
-    <button id="sol5" class="bookmark-btn" onclick="bookmark(this.id)">
-      <div class="icon">
-        <svg viewBox="0 0 36 36">
-          <path class="filled" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
-          <path class="default" d="M26 6H10V18V30C10 30 17.9746 23.5 18 23.5C18.0254 23.5 26 30 26 30V18V6Z" />
-          <path class="corner" d="M10 6C10 6 14.8758 6 18 6C21.1242 6 26 6 26 6C26 6 26 6 26 6H10C10 6 10 6 10 6Z" />
-        </svg>
-      </div>
-      Rätsel 5
-    </button>
   </div>
   <script>
     const pages = Array.from(document.querySelectorAll(".book .book-page"));
